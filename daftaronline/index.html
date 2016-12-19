@@ -1,0 +1,211 @@
+<!doctype html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+    <meta name="description" content="Pendaftaran Online SMP Al-Qur'an Ma'rifatussalaam">
+    <meta name="author" content="Asep Sholihin">
+    <meta name="keywords" content="ma'rifatussalaam, Pendaftaran Online, boarding school, smp al-qur'an, smp, ma-had, tahfizh, pesantren">
+    <link rel="icon" href="../img/nav-logo.png">
+    <title ng-bind="title">PSMB SMP Al-Qur'an Ma'rifatussalaam 2017/2018</title>
+
+    <link href="http://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+
+    <style>
+    html, body {
+    	height: 100%;
+    }
+
+    html {
+    	background-image: url('../img/parallax1.jpg');
+    	background-position: center center;
+    	background-repeat: no-repeat;
+    	background-size: cover;
+    }
+
+    body {
+    	background-color: rgba(25, 74, 148, 0.59);
+    	background-image: url('img/pattern.png');
+    	background-position: center;
+    	background-repeat: repeat;
+    	font-family: 'Raleway', 'Arial', sans-serif;
+    }
+
+    .countdown-container {
+    	position: relative;
+    	top: 50%;
+    	-webkit-transform: translateY(-50%);
+    	-moz-transform: translateY(-50%);
+    	transform: translateY(-50%);
+
+    }
+
+    .clock-item .inner {
+    	height: 0px;
+    	padding-bottom: 100%;
+    	position: relative;
+    	width: 100%;
+    }
+
+    .clock-canvas {
+    	background-color: rgba(255, 255, 255, .1);
+    	border-radius: 50%;
+    	height: 0px;
+    	padding-bottom: 100%;
+    }
+
+    .text {
+    	color: #fff;
+    	font-size: 30px;
+    	font-weight: bold;
+    	margin-top: -50px;
+    	position: absolute;
+    	top: 50%;
+    	text-align: center;
+    	text-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+    	width: 100%;
+    }
+
+    .text .val {
+    	font-size: 50px;
+    }
+
+    .text .type-time {
+    	font-size: 20px;
+    }
+
+    .wrap-logo {
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        margin: auto;
+        z-index: 9;
+        border-top: 4px solid #FFF;
+    	color: #FFF;
+    }
+    .logo img {
+    	height: 84px;
+    	background: #fff;
+    	padding: 10px;
+    }
+
+    @media (min-width: 768px) and (max-width: 991px) {
+    	.clock-item {
+    		margin-bottom: 30px;
+    	}
+    }
+
+    @media (max-width: 767px) {
+    	.clock-item {
+    		margin: 0px 30px 30px 30px;
+    	}
+
+        .countdown-container {
+            position: relative;
+            top: 90%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+    }
+    @media (max-width: 480px) {
+        .countdown-container {
+            position: relative;
+            top: 160%;
+            -webkit-transform: translateY(-50%);
+            -moz-transform: translateY(-50%);
+            transform: translateY(-50%);
+        }
+
+    }
+
+    </style>
+</head>
+
+<body>
+
+<div class="wrap-logo hide-on-med-and-down">
+    <div class="logo">
+        <img src="../img/ic_logo.png" alt="Logo MS" />
+    </div>
+    <h3><strong>PSMB</strong> Ma'rifatussalaam</h3>
+</div>
+
+<div class="countdown countdown-container container">
+    <div class="clock row">
+        <div class="clock-item clock-days countdown-time-value col-sm-6 col-md-3">
+            <div class="wrap">
+                <div class="inner">
+                    <div id="canvas-days" class="clock-canvas"></div>
+
+                    <div class="text">
+                        <p class="val">0</p>
+                        <p class="type-days type-time">HARI</p>
+                    </div><!-- /.text -->
+                </div><!-- /.inner -->
+            </div><!-- /.wrap -->
+        </div><!-- /.clock-item -->
+
+        <div class="clock-item clock-hours countdown-time-value col-sm-6 col-md-3">
+            <div class="wrap">
+                <div class="inner">
+                    <div id="canvas-hours" class="clock-canvas"></div>
+
+                    <div class="text">
+                        <p class="val">0</p>
+                        <p class="type-hours type-time">JAM</p>
+                    </div><!-- /.text -->
+                </div><!-- /.inner -->
+            </div><!-- /.wrap -->
+        </div><!-- /.clock-item -->
+
+        <div class="clock-item clock-minutes countdown-time-value col-sm-6 col-md-3">
+            <div class="wrap">
+                <div class="inner">
+                    <div id="canvas-minutes" class="clock-canvas"></div>
+
+                    <div class="text">
+                        <p class="val">0</p>
+                        <p class="type-minutes type-time">MENIT</p>
+                    </div><!-- /.text -->
+                </div><!-- /.inner -->
+            </div><!-- /.wrap -->
+        </div><!-- /.clock-item -->
+
+        <div class="clock-item clock-seconds countdown-time-value col-sm-6 col-md-3">
+            <div class="wrap">
+                <div class="inner">
+                    <div id="canvas-seconds" class="clock-canvas"></div>
+
+                    <div class="text">
+                        <p class="val">0</p>
+                        <p class="type-seconds type-time">DETIK</p>
+                    </div><!-- /.text -->
+                </div><!-- /.inner -->
+            </div><!-- /.wrap -->
+        </div><!-- /.clock-item -->
+    </div><!-- /.clock -->
+</div><!-- /.countdown-wrapper -->
+
+
+
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="js/kinetic.js"></script>
+<script type="text/javascript" src="jquery.final-countdown.min.js"></script>
+<script type="text/javascript">
+    $('document').ready(function() {
+        'use strict';
+        var date = Math.floor(Date.now() /1000);
+
+    	$('.countdown').final_countdown({
+            'start': date,
+            'end': 1480550400,
+            'now': date
+        });
+    });
+</script>
+
+</body>
+</html>

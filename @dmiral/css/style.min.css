@@ -1,0 +1,202 @@
+body {
+    font-size: 0.8em;
+    font-family: sans-serif;
+}
+*:focus {
+    outline: none;
+}
+#wrapper {
+    margin: 30px;
+}
+#header {
+    margin-bottom: 30px;
+}
+#footer {
+    margin-top: 50px;
+    text-align: center;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: #555;
+    text-align: center;
+    padding: 6px 16px;
+    text-decoration: none;
+    border-bottom: 2px solid #FFF;
+}
+
+li a:hover:not(.active) {
+    border-bottom: 2px solid #aaa;
+    transition: all 0.5s ease;
+}
+
+.active {
+    background-color: #9d71e2;
+    color: #fff;
+}
+#content table {
+    width: 100% !important;
+    font-size: 1em;
+    padding: 10px 0;
+}
+#content table th {
+    background: #34495e;
+    color: #fff;
+    padding: 10px;
+    text-align: left;
+}
+#content table td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.Checkbox {
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+.Checkbox > * {
+  position: absolute;
+}
+.Checkbox-visible {
+  border: 1px solid gray;
+  width: 16px;
+  height: 16px;
+  margin: 2px;
+  background: #fff;
+  border: 1px solid #dedede;
+  border-radius: 3px;
+}
+.Checkbox > input {
+  z-index: 1;
+  opacity: 0;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translatex(-50%) translatey(-50%);
+          transform: translatex(-50%) translatey(-50%);
+  display: block;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+}
+.Checkbox > input:checked + .Checkbox-visible {
+  background: #59cb59;
+  border-color: #59cb59;
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMTQnIGhlaWdodD0nMTQnIHZpZXdCb3g9JzAgMCAxNCAxNCcgeG1sbnM9J2h0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnJz48dGl0bGU+d2hpdGU8L3RpdGxlPjxwYXRoIGQ9J001LjM3OCAxMS4zN0wyIDcuNTlsMS40MzgtMS4yODZMNS4zNzQgOC40N2w1LjE4NS01Ljg0TDEyIDMuOTFsLTYuNjIyIDcuNDYnIGZpbGw9JyNmZmYnLz48L3N2Zz4=);
+}
+.Checkbox > input:hover + .Checkbox-visible {
+  border-color: #cccccc;
+}
+.Checkbox > input:hover:checked + .Checkbox-visible {
+  border-color: #0ca750;
+}
+.Checkbox > input:focus + .Checkbox-visible {
+  border-color: #59cb59;
+}
+.wrapbox {
+    text-align: center;
+}
+.countbox {
+    border: 1px solid #ccc;
+    background: #eee;
+    width: 200px;
+    height: 100px;
+    display: inline-block;
+    margin: 10px;
+}
+.wrap-kwitansi {
+    display: none;
+}
+.loading {
+    display: none;
+    position: absolute;
+    background: #eee;
+    padding: 10px 0;
+    width: 200px;
+    text-align: center;
+    margin: auto;
+    left: 0;
+    right: 0;
+    bottom: 30px;
+}
+.button, .button-small {
+    margin: 10px 0;
+    width: 100%;
+    background-color: #9d71e2;
+    color: #fff;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 10px 20px;
+    border: 1px solid #7f4aaf;
+    transition: all 0.8s ease;
+    -webkit-transition: all 0.8s ease;
+    -moz-transition: all 0.8s ease;
+    -o-transition: all 0.8s ease;
+}
+.button-small {
+    font-size: 0.8em;
+}
+
+.button:hover, .button:active, .button-small:hover, .button-small:focus {
+    cursor: pointer;
+    background-color: #7646c1;
+    transition: all 0.8s ease;
+    -webkit-transition: all 0.8s ease;
+    -moz-transition: all 0.8s ease;
+    -o-transition: all 0.8s ease;
+}
+
+table {border-collapse: collapse;}
+.center {
+    text-align: center !important;
+}
+.ic_action {
+    width: 14px;
+    margin: 0 4px;
+}
+.form-config {
+    padding: 5px 5px;
+}
+input.form-config {
+    border: 1px solid #ccc;
+    margin: 2px;
+}
+.editor {
+    display: none;
+}
+a {
+    text-decoration: none;
+}
+a.username {
+    color: #333;
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+}
+a.username:hover {
+    color: #9d71e2;
+    transition: all 0.4s ease;
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+}
+.body-kwitansi {
+    padding:  15px 60px;
+    background: #fff url('logo-transparent.png') no-repeat center;
+}

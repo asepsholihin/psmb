@@ -1,0 +1,235 @@
+h3 {
+    font-size: 1.92em;
+}
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+ul {
+    margin: 0;
+    padding: 0;
+}
+ul li ul, ul li ol {
+    margin-left: 2.0rem;
+    margin-bottom: 0;
+}
+
+ul.navigator {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #FFF;
+
+	li {
+	    float: left;
+	}
+
+	li a {
+	    font-size: 0.8em;
+	    display: block;
+	    color: #111;
+	    text-align: center;
+	    padding: 8px 16px;
+	    text-decoration: none;
+	}
+
+	li a:hover:not(.active) {
+	    background-color: #8e65e2;
+	    color: #FFF;
+	}
+
+	.active {
+	    background-color: #8e65e2;
+	}
+	.right { float: right; }
+}
+
+p {
+  line-height: 2rem;
+}
+
+.bold {
+    font-weight: 400;
+}
+
+th.focus {
+  background-color: rgba(70,40,119,0.51);
+  color: #fff;
+}
+
+.btn {
+    border-radius: 46px;
+    font-weight: 100 !important;
+    height: auto;
+}
+
+.button-collapse {
+  color: #26a69a;
+}
+
+.circle-ic {
+    background: rgba(55, 24, 132, 0.28);
+    color: rgba(255, 255, 255, 0.78);
+    border-radius: 100%;
+    padding: 20px;
+    margin: 15px 0;
+    border: 4px solid #b9b9b9;
+}
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+  background: rgba(0, 0, 0, 0.5) url(../img/overlay.png) repeat;
+}
+.parallax-container .section {
+width: 100%;
+}
+
+.icon-block {
+  padding: 0 5px;
+}
+.icon-block .material-icons {
+    font-size: 1.5em;
+    position: relative;
+    top: 6px;
+    color: rgba(128, 106, 189, 0.9);
+    padding-right: 5px;
+}
+
+.informasi img {
+    max-width: 180px !important;
+}
+.informasi {
+    margin-top: 20px;
+}
+
+
+.page-footer {
+    .material-icons {
+        font-size: 1.5em;
+        position: relative;
+        top: 6px;
+        color: #FFF;
+        padding-right: 5px;
+    }
+}
+
+footer.page-footer {
+  margin: 0;
+}
+
+.gallery .caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    height: auto;
+    width: 100%;
+}
+.wrap-logo {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+    z-index: 9;
+
+    .logo img {
+        height: 84px;
+        background: #fff;
+        padding: 10px;
+    }
+}
+.wrap-slider {
+    .wrap-caption-header {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translateX(-50%) translateY(-50%);
+        height: auto;
+        width: auto;
+    }
+    .caption-header {
+        color: #fff;
+        padding: 20px 40px;
+        background: rgba(82, 56, 181, 0.61);
+    }
+}
+.gallery .caption h3 {
+    color: #FFF;
+    background: rgba(70, 40, 119, 0.51);
+    padding: 10px 0;
+}
+
+.overlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5) url(../img/overlay.png) repeat;
+    opacity: 0.8;
+}
+.item{
+    position: relative;
+}
+
+#owl-demo .item img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
+#owl-gallery .item img {
+    display: block;
+    width: 100%;
+    max-height: 650px;
+    object-fit: cover;
+}
+
+.wrap-sk, footer {
+    font-weight: 300 !important;
+}
+.wrap-alur h3 {
+    margin-bottom: 50px;
+}
+.wrap-alur .content-alur {
+    margin-top: 30px;
+}
+.wrap-alur {
+    #alur1,#alur2,#alur3,#alur4,#alur5,#alur6,#alur7,#alur8 {
+        display: none;
+    }
+}
+
+@media only screen and (max-width : 992px) {
+    #index-banner .section {
+        top: 10%;
+    }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+  .bordering {
+      padding-bottom: 30px !important;
+      border-bottom: 1px solid #ddd;
+  }
+  body {
+      font-size: 90% !important;
+  }
+  .section {
+    padding-bottom: 0;
+  }
+}
+@media screen and (min-width: 480px) and (min-width: 856px) {
+    h1,h2,h3,h4 {
+        font-size: 2.92rem;
+    }
+    .wrap-sk {
+        padding-left: 2em;
+        padding-right: 2em;
+    }
+}
