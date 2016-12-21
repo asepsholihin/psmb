@@ -45,6 +45,7 @@ $header = "
     <li><a class=\"calonsantri\" href=\"?pg=calonsantri\">Calon Santri</a></li>
     $pendaftaran
     $kelulusan
+    <li><a class=\"pemberkasan\" href=\"?pg=pemberkasan\">Pemberkasan</a></li>
     $user
     <li style=\"float:right\"><a class=\"active\" href=\"?pg=logout\">Logout</a></li>
 </ul>

@@ -19,6 +19,21 @@ while($row = mysql_fetch_assoc($query))
             # code...
             break;
     }
+    if($row['info2'] == ""){
+        $tgltes = "
+            <a class=\"ic-tanggal".$no."\" onclick=\"ubahtanggal('tanggal".$no."')\" href=\"javascript:void(0)\"><img src=\"img/edit.png\" /></a>
+            <div class=\"tanggal tanggal".$no." hidden\">
+            <form id=\"form".$no."\">
+                <input type=\"hidden\" name=\"hportu\" value=\"".$row['hportu']."\">
+                <input type=\"date\" name=\"info2\" value=\"".date('Y-m-d')."\">
+                <button class=\"button-small\" type=\"button\" onclick=\"edit('".$no."')\">Simpan</button>
+            </form>
+            </div>
+        ";
+    } else {
+        $tgltes = date_format(date_create($row['info2']),"d-m-Y");
+    }
+    $tgl_daftar = date_create($row['ts']);
     $data.="
     <tr>
         <td>".$no."</td>
@@ -27,8 +42,8 @@ while($row = mysql_fetch_assoc($query))
         <td>".ucwords(strtolower($row['tmplahir'])).", ".date_format($tgllahir,"d-m-Y")."</td>
         <td>".$row['asalsekolah']."</td>
         <td>".$row['hportu']."</td>
-        <td>".$row['ts']."</td>
-        <td>".$row['info2']."</td>
+        <td>".date_format($tgl_daftar,"d-m-Y H:i:s")."</td>
+        <td>".$tgltes."</td>
         <td>".$row['registrasi']."</td>
         <td>".$linkkwitansi."</td>
     </tr>
@@ -61,6 +76,8 @@ $kwitansi
 	</tbody>
 </table>
 
+<div class=\"loading\">Loading</div>
+
 <script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js\"></script>
 <script type=\"text/javascript\" charset=\"utf8\" src=\"//cdn.datatables.net/1.10.12/js/jquery.dataTables.js\"></script>
 <script>
@@ -79,15 +96,33 @@ $(document).ready(function(){
 </script>
 <script src=\"js/jquery.printElement.min.js\"></script>
 <script>
+
+function ubahtanggal(idclass){
+    $('.tanggal').addClass( 'hidden' );
+    $('.'+idclass+'').removeClass( 'hidden' );
+}
+
+function edit(idclass){
+    $('.loading').show();
+    $.post('../api/admin/tanggalseleksi.php', $('#form'+idclass+'').serialize(), function(data) {
+        var obj = JSON.parse(data);
+        if (!obj.error) {
+            window.location.href = '?pg=calonsantri';
+        } else {
+            alert('Ada yang salah!');
+        }
+    });
+}
+
 function printKwitansi(replid){
 	$('.wrap-kwitansi').show();
-        $('.'+replid).printElement({
-            overrideElementCSS:[
-            'print.css',
-            { href:'css/print.css',media:'print'}],
-            leaveOpen:false
-        });
-        $('.wrap-kwitansi').hide();
+    $('.'+replid).printElement({
+        overrideElementCSS:[
+        'print.css',
+        { href:'css/print.css',media:'print'}],
+        leaveOpen:false
+    });
+    $('.wrap-kwitansi').hide();
 }
 </script>
 ";

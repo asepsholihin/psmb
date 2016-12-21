@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-error_reporting(E_ALL & ~E_NOTICE);
+error_reporting(0);
 
 include "pages/template.php";
 include "pages/header.php";
@@ -23,6 +23,9 @@ switch($pg)
 	break;
 	case "kelulusan":
 		include "pages/kelulusan.php";
+	break;
+	case "pemberkasan":
+		include "pages/pemberkasan.php";
 	break;
 	case "logout":
 		include "pages/logout.php";

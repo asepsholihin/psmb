@@ -5,6 +5,9 @@ body {
 *:focus {
     outline: none;
 }
+.hidden {
+  display: none;
+}
 #wrapper {
     margin: 30px;
 }
@@ -68,6 +71,7 @@ li a:hover:not(.active) {
   width: 20px;
   height: 20px;
   position: relative;
+  margin: auto;
 }
 .Checkbox > * {
   position: absolute;
@@ -124,7 +128,9 @@ li a:hover:not(.active) {
 .loading {
     display: none;
     position: absolute;
-    background: #eee;
+    background: rgb(217, 239, 255);
+    border: 2px solid #83baff;
+    border-radius: 4px;
     padding: 10px 0;
     width: 200px;
     text-align: center;
@@ -199,4 +205,10 @@ a.username:hover {
 .body-kwitansi {
     padding:  15px 60px;
     background: #fff url('logo-transparent.png') no-repeat center;
+}
+.catatan {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    font-family: sans-serif;
 }

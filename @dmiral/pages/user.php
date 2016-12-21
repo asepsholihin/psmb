@@ -61,8 +61,8 @@ while($row = mysql_fetch_assoc($query))
             </div>
         </td>
         <td class=\"center\"><a onclick=\"editor('editor".$no."')\" href=\"#\"><img class=\"ic_action\" src=\"css/edit.png\"></a>  <a href=\"\"><img class=\"ic_action\" src=\"css/reset.png\"></a>  <a href=\"\"><img class=\"ic_action\" src=\"css/hapus.png\"></a></td>
-    </tr>
-    <tr class=\"editor editor".$no."\">
+        
+        <tr class=\"editor editor".$no."\">
         <form id=\"form".$no."\">
         <input type=\"hidden\" name=\"type\" value=\"edit\">
         <td>".$no."</td>
@@ -85,6 +85,7 @@ while($row = mysql_fetch_assoc($query))
         </td>
         <td class=\"center\"><button class=\"button-small\" type=\"button\" onclick=\"edit('".$no."')\">Simpan</button></td>
         </form>
+    </tr>
     </tr>
     ";
     $no++;
@@ -123,10 +124,10 @@ $content = "
             <th class=\"no-sort\" width=\"1\">No</th>
 			<th>Nama</th>
 			<th>Username</th>
-			<th class=\"no-sort\">Pendaftaran</th>
-			<th class=\"no-sort\">Kelulusan</th>
-			<th class=\"no-sort\">User</th>
-			<th class=\"no-sort center\" width=\"80\"><a href=\"#\" onclick=\"tambahin()\"><img src=\"css/user.png\"></a></th>
+			<th class=\"center no-sort\">Pendaftaran</th>
+			<th class=\"center no-sort\">Kelulusan</th>
+			<th class=\"center no-sort\">User</th>
+			<th class=\"center no-sort center\" width=\"80\"><a href=\"#\" onclick=\"tambahin()\"><img src=\"css/user.png\"></a></th>
 		</tr>
 	</thead>
 	<tbody>

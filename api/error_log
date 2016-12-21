@@ -1,0 +1,13 @@
+[05-Nov-2016 07:06:05 UTC] PHP Warning:  mysql_connect(): Access denied for user 'marifatu_psmb'@'localhost' (using password: YES) in /home/marifatu/public_html/psmb/api/db_connect.php on line 28
+[05-Nov-2016 07:06:05 UTC] PHP Warning:  mysql_close(): no MySQL-Link resource supplied in /home/marifatu/public_html/psmb/api/db_connect.php on line 42
+[05-Nov-2016 07:06:14 UTC] PHP Warning:  mysql_connect(): Access denied for user 'marifatu_psmb'@'localhost' (using password: YES) in /home/marifatu/public_html/psmb/api/db_connect.php on line 28
+[05-Nov-2016 07:06:14 UTC] PHP Warning:  mysql_close(): no MySQL-Link resource supplied in /home/marifatu/public_html/psmb/api/db_connect.php on line 42
+[12-Nov-2016 18:18:13 UTC] PHP Warning:  file_put_contents(http://psmb.marifatussalaam.org/img/uploads/IMG_20161112181813.png): failed to open stream: HTTP wrapper does not support writeable connections in /home/marifatu/public_html/psmb/api/fileUpload.php on line 20
+[12-Nov-2016 18:22:07 UTC] PHP Warning:  file_put_contents(psmb/img/uploads/IMG_20161112182207.png): failed to open stream: No such file or directory in /home/marifatu/public_html/api/fileUpload.php on line 20
+[16-Nov-2016 04:10:12 UTC] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, boolean given in /home/marifatu/api/siswa.php on line 82
+[27-Nov-2016 16:23:19 UTC] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home/marifatu/api/layout.php on line 177
+[27-Nov-2016 16:23:53 UTC] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, string given in /home/marifatu/api/layout.php on line 177
+[05-Dec-2016 04:09:17 UTC] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, boolean given in /home/marifatu/api/siswa.php on line 82
+[16-Dec-2016 00:35:25 UTC] PHP Warning:  mysql_connect(): No such file or directory in /home/marifatu/api/db_connect.php on line 28
+[16-Dec-2016 00:35:25 UTC] PHP Warning:  mysql_close(): no MySQL-Link resource supplied in /home/marifatu/api/db_connect.php on line 42
+[16-Dec-2016 02:02:15 UTC] PHP Warning:  date_format() expects parameter 1 to be DateTimeInterface, boolean given in /home/marifatu/api/siswa.php on line 82
