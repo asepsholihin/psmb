@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 $data = "";
-$sql = "SELECT nopendaftaran,nama,tmplahir,tgllahir,asalsekolah,hportu,ts,is_konfirmasi,registrasi,info2 FROM calonsiswa WHERE aktif=1";
+$sql = "SELECT nopendaftaran,nama,tmplahir,tgllahir,asalsekolah,hportu,ts,is_konfirmasi,registrasi,info2,info1 FROM calonsiswa WHERE aktif=1";
 $query = mysql_query($sql);
 $no = 1;
 while($row = mysql_fetch_assoc($query))
@@ -44,7 +44,7 @@ while($row = mysql_fetch_assoc($query))
         <td>".$row['hportu']."</td>
         <td>".date_format($tgl_daftar,"d-m-Y H:i:s")."</td>
         <td>".$tgltes."</td>
-        <td>".$row['registrasi']."</td>
+        <td>".$row['info1']."</td>
         <td>".$linkkwitansi."</td>
     </tr>
     ";
@@ -67,7 +67,7 @@ $kwitansi
 			<th class=\"no-sort\">Handphone</th>
 			<th>Tgl Daftar</th>
 			<th>Tgl Tes</th>
-			<th>Daftar</th>
+			<th>Checked by</th>
 			<th class=\"no-sort\">Print</th>
 		</tr>
 	</thead>

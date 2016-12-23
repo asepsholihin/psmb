@@ -10,7 +10,7 @@ if(!$_SESSION["session_logged"])
 		$data = mysql_fetch_row($query);
 		$row = mysql_num_rows($query);
 		if( $row > 0 ) {
-		    	$_SESSION["session_logged"] = "true";
+		    $_SESSION["session_logged"] = "true";
 			$_SESSION["session_username"] = $data[0];
 			$_SESSION["session_name"] = $data[1];
 			header("Location: ?pg=home");
