@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 
-$sql = "SELECT role_pendaftaran,role_kelulusan,role_user FROM users WHERE username='".$_SESSION[session_username]."'";
+$sql = "SELECT role_pendaftaran,role_kelulusan,role_user,role_pemberkasan,role_wawancara,role_seleksi,role_quisioner FROM users WHERE username='".$_SESSION[session_username]."'";
 $query = mysql_query($sql);
 $row = mysql_fetch_assoc($query);
 
@@ -38,6 +38,50 @@ switch ($row['role_user']) {
         # code...
         break;
 }
+switch ($row['role_pemberkasan']) {
+    case '1':
+        $pemberkasan = "<li><a class=\"pemberkasan\" href=\"?pg=pemberkasan\">Pemberkasan</a></li>";
+        break;
+    case '0':
+        $pemberkasan = '';
+        break;
+    default:
+        # code...
+        break;
+}
+switch ($row['role_wawancara']) {
+    case '1':
+        $wawancara = "<li><a class=\"wawancara\" href=\"?pg=wawancara\">Wawancara</a></li>";
+        break;
+    case '0':
+        $wawancara = '';
+        break;
+    default:
+        # code...
+        break;
+}
+switch ($row['role_seleksi']) {
+    case '1':
+        $seleksi = "<li><a class=\"seleksi\" href=\"?pg=seleksi\">Seleksi</a></li>";
+        break;
+    case '0':
+        $seleksi = '';
+        break;
+    default:
+        # code...
+        break;
+}
+switch ($row['role_quisioner']) {
+    case '1':
+        $quisioner = "<li><a class=\"quisioner\" href=\"?pg=quisioner\">Quisioner</a></li>";
+        break;
+    case '0':
+        $quisioner = '';
+        break;
+    default:
+        # code...
+        break;
+}
 
 $header = "
 <ul>
@@ -45,7 +89,10 @@ $header = "
     <li><a class=\"calonsantri\" href=\"?pg=calonsantri\">Calon Santri</a></li>
     $pendaftaran
     $kelulusan
-    <li><a class=\"pemberkasan\" href=\"?pg=pemberkasan\">Pemberkasan</a></li>
+    $pemberkasan
+    $wawancara
+    $seleksi
+    $quisioner
     $user
     <li style=\"float:right\"><a class=\"active\" href=\"?pg=logout\">Logout</a></li>
 </ul>

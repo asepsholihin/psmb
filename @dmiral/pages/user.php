@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 $data = "";
-$sql = "SELECT nama,username,role_pendaftaran,role_kelulusan,role_user FROM users";
+$sql = "SELECT nama,username,role_pendaftaran,role_kelulusan,role_user,role_pemberkasan,role_wawancara,role_seleksi,role_quisioner FROM users";
 $query = mysql_query($sql);
 $no = 1;
 while($row = mysql_fetch_assoc($query))
@@ -38,6 +38,50 @@ while($row = mysql_fetch_assoc($query))
         default:
             # code...
             break;
+    }    
+    switch ($row['role_pemberkasan']) {
+        case '1':
+            $pemberkasan = "checked";
+            break;
+        case '0':
+            $pemberkasan = '';
+            break;
+        default:
+            # code...
+            break;
+    }
+    switch ($row['role_wawancara']) {
+        case '1':
+            $wawancara = "checked";
+            break;
+        case '0':
+            $wawancara = '';
+            break;
+        default:
+            # code...
+            break;
+    }
+    switch ($row['role_seleksi']) {
+        case '1':
+            $seleksi = "checked";
+            break;
+        case '0':
+            $seleksi = '';
+            break;
+        default:
+            # code...
+            break;
+    }
+    switch ($row['role_quisioner']) {
+        case '1':
+            $quisioner = "checked";
+            break;
+        case '0':
+            $quisioner = '';
+            break;
+        default:
+            # code...
+            break;
     }
 
     $data.="
@@ -47,12 +91,32 @@ while($row = mysql_fetch_assoc($query))
         <td>".$row['username']."</td>
         <td>
             <div class=\"Checkbox\">
-                <input type=\"checkbox\"  name=\"pendaftaran\" ".$pendaftaran." value=\"1\" disabled/><div class=\"Checkbox-visible\"></div>
+                <input type=\"checkbox\" ".$pendaftaran." disabled/><div class=\"Checkbox-visible\"></div>
             </div>
         </td>
         <td>
             <div class=\"Checkbox\">
-                <input type=\"checkbox\"  name=\"kelulusan\" ".$kelulusan." value=\"1\" disabled/><div class=\"Checkbox-visible\"></div>
+                <input type=\"checkbox\" ".$kelulusan." disabled/><div class=\"Checkbox-visible\"></div>
+            </div>
+        </td>
+        <td>
+            <div class=\"Checkbox\">
+                <input type=\"checkbox\" ".$pemberkasan." disabled/><div class=\"Checkbox-visible\"></div>
+            </div>
+        </td>
+        <td>
+            <div class=\"Checkbox\">
+                <input type=\"checkbox\" ".$wawancara." disabled/><div class=\"Checkbox-visible\"></div>
+            </div>
+        </td>
+        <td>
+            <div class=\"Checkbox\">
+                <input type=\"checkbox\" ".$seleksi." disabled/><div class=\"Checkbox-visible\"></div>
+            </div>
+        </td>
+        <td>
+            <div class=\"Checkbox\">
+                <input type=\"checkbox\" ".$quisioner." disabled/><div class=\"Checkbox-visible\"></div>
             </div>
         </td>
         <td>
@@ -76,6 +140,26 @@ while($row = mysql_fetch_assoc($query))
         <td>
             <div class=\"Checkbox\">
                 <input type=\"checkbox\"  name=\"kelulusan\" ".$kelulusan." value=\"1\" /><div class=\"Checkbox-visible\"></div>
+            </div>
+        </td>
+        <td>
+            <div class=\"Checkbox\">
+                <input type=\"checkbox\"  name=\"pemberkasan\" ".$pemberkasan." value=\"1\" /><div class=\"Checkbox-visible\"></div>
+            </div>
+        </td>
+        <td>
+            <div class=\"Checkbox\">
+                <input type=\"checkbox\"  name=\"wawancara\" ".$wawancara." value=\"1\" /><div class=\"Checkbox-visible\"></div>
+            </div>
+        </td>
+        <td>
+            <div class=\"Checkbox\">
+                <input type=\"checkbox\"  name=\"seleksi\" ".$seleksi." value=\"1\" /><div class=\"Checkbox-visible\"></div>
+            </div>
+        </td>
+        <td>
+            <div class=\"Checkbox\">
+                <input type=\"checkbox\"  name=\"quisioner\" ".$quisioner." value=\"1\" /><div class=\"Checkbox-visible\"></div>
             </div>
         </td>
         <td>
@@ -109,6 +193,26 @@ $form = "
     </td>
     <td>
         <div class=\"Checkbox\">
+            <input type=\"checkbox\"  name=\"pemberkasan\" value=\"1\" /><div class=\"Checkbox-visible\"></div>
+        </div>
+    </td>
+    <td>
+        <div class=\"Checkbox\">
+            <input type=\"checkbox\"  name=\"wawancara\" value=\"1\" /><div class=\"Checkbox-visible\"></div>
+        </div>
+    </td>
+    <td>
+        <div class=\"Checkbox\">
+            <input type=\"checkbox\"  name=\"seleksi\" value=\"1\" /><div class=\"Checkbox-visible\"></div>
+        </div>
+    </td>
+    <td>
+        <div class=\"Checkbox\">
+            <input type=\"checkbox\"  name=\"quisioner\" value=\"1\" /><div class=\"Checkbox-visible\"></div>
+        </div>
+    </td>
+    <td>
+        <div class=\"Checkbox\">
             <input type=\"checkbox\"  name=\"user\" value=\"1\" /><div class=\"Checkbox-visible\"></div>
         </div>
     </td>
@@ -126,6 +230,10 @@ $content = "
 			<th>Username</th>
 			<th class=\"center no-sort\">Pendaftaran</th>
 			<th class=\"center no-sort\">Kelulusan</th>
+            <th class=\"center no-sort\">Pemberkasan</th>
+            <th class=\"center no-sort\">Wawancara</th>
+            <th class=\"center no-sort\">Seleksi</th>
+            <th class=\"center no-sort\">Quisioner</th>
 			<th class=\"center no-sort\">User</th>
 			<th class=\"center no-sort center\" width=\"80\"><a href=\"#\" onclick=\"tambahin()\"><img src=\"css/user.png\"></a></th>
 		</tr>
@@ -155,7 +263,7 @@ $(document).ready(function(){
 });
 function edit(idclass){
     $('.loading').show();
-    $.post('http://api.marifatussalaam.org/admin/user.php', $('#form'+idclass+'').serialize(), function(data) {
+    $.post('../api/admin/user.php', $('#form'+idclass+'').serialize(), function(data) {
         var obj = JSON.parse(data);
         if (!obj.error) {
             window.location.href = '?pg=user';
