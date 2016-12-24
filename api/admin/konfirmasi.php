@@ -1,5 +1,4 @@
 <?php
-session_start();
 // include db connect class
 require_once '../db_connect.php';
 
@@ -19,7 +18,7 @@ if($datacek['kelamin'] == 'l') {
 //Generate No Pendaftaran!
 $nopendaftaran = '2017'.$departemen.$datacek['replid'];
 
-$sql = "UPDATE calonsiswa SET info1='".$_SESSION["session_name"]."', transaksi='".$_POST['type']."', is_konfirmasi=1, nopendaftaran='".$nopendaftaran."', tgl_konfirmasi=now() WHERE hportu='".$_POST['id']."'";
+$sql = "UPDATE calonsiswa SET info1='".$_POST['petugas']."', transaksi='".$_POST['type']."', is_konfirmasi=1, nopendaftaran='".$nopendaftaran."', tgl_konfirmasi=now() WHERE hportu='".$_POST['id']."'";
 $query = mysql_query( $sql );
 
 if(! $query ){

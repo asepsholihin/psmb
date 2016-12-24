@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include "config.php";
 $data = "";
 $sql = "SELECT nama,tmplahir,tgllahir,asalsekolah,hportu,konfirmasi_biaya,bukti_transfer FROM calonsiswa WHERE is_konfirmasi=0 AND aktif=1";
@@ -22,17 +24,17 @@ while($row = mysql_fetch_assoc($query))
         <td>".$no."</td>
         <td>
             <div class=\"Checkbox\">
-                <input type=\"checkbox\" onclick=\"konfirmasi('".$row['hportu']."', 'tunai')\" name=\"tunai\" /><div class=\"Checkbox-visible\"></div>
+                <input type=\"checkbox\" onclick=\"konfirmasi('".$row['hportu']."', '".$_SESSION["session_name"]."', 'tunai')\" name=\"tunai\" /><div class=\"Checkbox-visible\"></div>
             </div>
         </td>
         <td>
             <div class=\"Checkbox\">
-                <input type=\"checkbox\" onclick=\"konfirmasi('".$row['hportu']."', 'transfer')\" name=\"transfer\" /><div class=\"Checkbox-visible\"></div>
+                <input type=\"checkbox\" onclick=\"konfirmasi('".$row['hportu']."', '".$_SESSION["session_name"]."', 'transfer')\" name=\"transfer\" /><div class=\"Checkbox-visible\"></div>
             </div>
         </td>
         <td>
             <div class=\"Checkbox\">
-                <input type=\"checkbox\" onclick=\"konfirmasi('".$row['hportu']."', 'free')\" name=\"free\" /><div class=\"Checkbox-visible\"></div>
+                <input type=\"checkbox\" onclick=\"konfirmasi('".$row['hportu']."', '".$_SESSION["session_name"]."', 'free')\" name=\"free\" /><div class=\"Checkbox-visible\"></div>
             </div>
         </td>
         <td>".ucwords(strtolower($row['nama']))."</td>
@@ -85,13 +87,14 @@ $(document).ready(function(){
     $('.konfirmasipembayaran').addClass('active');
 
 });
-function konfirmasi(id,type){
+function konfirmasi(id,petugas,type){
     $('.loading').show();
     var r = confirm('Yakin dia udah bayar?');
     if (r == true) {
-        $.post('http://api.marifatussalaam.org/admin/konfirmasi.php',
+        $.post('../api/admin/konfirmasi.php',
         {
             id:id,
+            petugas:petugas,
             type:type
         },
         function(data,status){
