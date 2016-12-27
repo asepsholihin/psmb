@@ -27,6 +27,9 @@ switch($pg)
 	case "pemberkasan":
 		include "pages/pemberkasan.php";
 	break;
+	case "wawancara":
+		include "pages/wawancara.php";
+	break;
 	case "quisioner":
 		include "pages/quisioner.php";
 	break;

@@ -541,7 +541,7 @@ $content = '
                         </div>
                         <div class="form-group">
                             <label class="control-label">Hanphone (tidak dapat diubah)</label>
-                            <input maxlength="100" type="text" name="hportu" disabled class="form-control" value="'.$row['hportu'].'" placeholder="Nomor Handphone Orangtua/Wali" />
+                            <input maxlength="100" type="text" name="hportu" readonly class="form-control" value="'.$row['hportu'].'" placeholder="Nomor Handphone Orangtua/Wali" />
                         </div>
                         <div class="form-group">
                             <label class="control-label">Pilih Tanggal Seleksi</label>

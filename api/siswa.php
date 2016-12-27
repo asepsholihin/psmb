@@ -104,7 +104,6 @@ if(!empty($_POST['registrasi'])){
 
 // mysql inserting a new row
 $sql = "".$type."
-nopendaftaran='',
 nisn='".$_POST['nisn']."',
 nik='".$_POST['nik']."',
 noun='".$_POST['noun']."',
@@ -129,7 +128,6 @@ bahasa='".$_POST['bahasa']."',
 berat='".$_POST['berat']."',
 tinggi='".$_POST['tinggi']."',
 darah='".$_POST['darah']."',
-foto='',
 alamatsiswa='".addslashes($_POST['alamatsiswa'])."',
 jarak='".$_POST['jaraksekolah']."',
 kodepossiswa='".$_POST['kodepossiswa']."',
