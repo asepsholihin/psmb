@@ -8,6 +8,10 @@ body {
 .hidden {
   display: none;
 }
+.active {
+    background-color: #9d71e2;
+    color: #fff !important;
+}
 #wrapper {
     margin: 30px;
 }
@@ -18,18 +22,22 @@ body {
     margin-top: 50px;
     text-align: center;
 }
-ul {
-    list-style-type: none;
+ul.nav {
+    text-align: left;
+    display: inline;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    list-style: none;
 }
 
-li {
-    float: left;
+/* style for the individual menu items */
+ul.nav li {
+    display: inline-block;
 }
 
-li a {
+
+ul.nav li a {
+    transition: all 0.2s;
     display: block;
     color: #555;
     text-align: center;
@@ -38,9 +46,49 @@ li a {
     border-bottom: 2px solid #FFF;
 }
 
-li a:hover:not(.active) {
+
+li a:hover:not(.active) {    
+    background-color: #9d71e2;
+    color: #fff !important;
     border-bottom: 2px solid #aaa;
     transition: all 0.5s ease;
+}
+
+ul.nav li ul {
+    padding: 0;
+    position: absolute;
+    z-index: 999;
+    top: 57px;
+    width: 170px;
+    opacity: 0;
+    transition: opacity 0.2s;
+    display: none;
+}
+
+ul.nav li ul li a {    
+    background: #fff;
+    transition: all 0.2s;
+    display: block;
+    min-width: 170px;
+    color: #555;
+    text-align: left;
+    padding: 6px 16px;
+    text-decoration: none;
+    border-bottom: 2px solid #FFF;
+}
+ul.nav li ul li a:hover {
+    background-color: #9d71e2;
+    color: #fff !important;
+}
+ul.nav li ul.nav li:hover {
+    background: #666;
+    border-bottom: none;
+    transition: all 0.5s ease;
+}
+
+ul.nav li:hover ul{
+    display: block;
+    opacity: 1;
 }
 
 .radio-toolbar input[type="radio"] {
@@ -64,10 +112,6 @@ li a:hover:not(.active) {
     color: #fff;
 }
 
-.active {
-    background-color: #9d71e2;
-    color: #fff;
-}
 #content table {
     width: 100% !important;
     font-size: 1em;
@@ -239,12 +283,11 @@ a.username:hover {
     font-family: sans-serif;
 }
 .search {
-    width: 200px;
+    width: 100%;
     margin: 10px;
 }
 .search ul {
-    position: absolute;
-    width: 200px;
+    width: 100%;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -272,6 +315,7 @@ a.username:hover {
     color: white;
 }
 .input-search {
-    width: 200px;
-    padding: 5px;
+    width: 100%;
+    padding: 8px;
+    text-align: center;
 }

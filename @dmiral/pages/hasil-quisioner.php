@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 $data = "";
-$sql = "SELECT nopendaftaran,nama,tmplahir,tgllahir,asalsekolah,hportu FROM calonsiswa WHERE lulus=0 and aktif=1";
+$sql = "SELECT a.nopendaftaran,a.nama,a.tmplahir,a.tgllahir,a.asalsekolah,a.hportu,b.petugas FROM calonsiswa a INNER JOIN quis_ortu b ON a.nopendaftaran=b.nopendaftaran WHERE lulus=0 and aktif=1";
 $query = mysql_query($sql);
 $no = 1;
 while($row = mysql_fetch_assoc($query))
@@ -11,18 +11,13 @@ while($row = mysql_fetch_assoc($query))
     $data.="
     <tr>
         <td>".$no."</td>
-        <td>
-            <div class=\"Checkbox\">
-                <input type=\"checkbox\"  name=\"lulus\" value=\"".$row['nopendaftaran']."\" /><div class=\"Checkbox-visible\"></div>
-            </div>
-        </td>
         <td>".$row['nopendaftaran']."</td>
         <td>".ucwords(strtolower($row['nama']))."</td>
-        <td>".ucwords(strtolower($row['tmplahir']))."</td>
-        <td>".date_format($tgllahir,"d-m-Y")."</td>
         <td>".$row['asalsekolah']."</td>
         <td>".$row['hportu']."</td>
         <td>".date_format($date,"d-m-Y")."</td>
+        <td>".$row['petugas']."</td>
+        <td class=\"center\"><a target=\"_blank\" href=\"pages/detail-quisioner.php?nopendaftaran=".$row['nopendaftaran']."&nama=".ucwords(strtolower($row['nama']))."\">Cetak</a></td>
     </tr>
     ";
     $no++;
@@ -34,23 +29,19 @@ $content = "
 	<thead>
 		<tr>
             <th class=\"no-sort\" width=\"1\">No</th>
-			<th class=\"no-sort\" width=\"1\">Lulus</th>
 			<th>No Pendaftaran</th>
 			<th>Nama</th>
-			<th>Tempat Lahir</th>
-			<th>Tanggal Lahir</th>
 			<th>Asal Sekolah</th>
 			<th class=\"no-sort\">Handphone</th>
 			<th>Tanggal Daftar</th>
+			<th>Petugas</th>			
+			<th class=\"center\">Wawancara</th>
 		</tr>
 	</thead>
 	<tbody>
 		$data
 	</tbody>
 </table>
-<button class=\"button\" onclick=\"lulus()\">Lulus</button>
-
-<div class=\"loading\">Loading</div>
 
 <script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js\"></script>
 <script type=\"text/javascript\" charset=\"utf8\" src=\"//cdn.datatables.net/1.10.12/js/jquery.dataTables.js\"></script>
@@ -64,24 +55,8 @@ $(document).ready(function(){
             }
         ]
     });
-    $('.kelulusan').addClass('active');
+    $('.quisioner').addClass('active');
 });
-function lulus(){
-    $('.loading').show();
-    var checkedValues = $('input[name=lulus]:checked').map(function() {
-        return this.value;
-    }).get();
-    var r = confirm('Yakin mereka lulus?');
-    if (r == true) {
-        $.post('http://api.marifatussalaam.org/admin/lulus.php',
-        {
-            id: checkedValues
-        },
-        function(data,status){
-            window.location.href = '?pg=kelulusan';
-        });
-    }
-}
 </script>
 ";
 

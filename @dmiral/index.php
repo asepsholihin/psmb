@@ -30,8 +30,14 @@ switch($pg)
 	case "wawancara":
 		include "pages/wawancara.php";
 	break;
+	case "hasil-wawancara":
+		include "pages/hasil-wawancara.php";
+	break;
 	case "quisioner":
 		include "pages/quisioner.php";
+	break;
+	case "hasil-quisioner":
+		include "pages/hasil-quisioner.php";
 	break;
 	case "logout":
 		include "pages/logout.php";

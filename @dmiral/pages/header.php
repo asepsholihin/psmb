@@ -51,7 +51,14 @@ switch ($row['role_pemberkasan']) {
 }
 switch ($row['role_wawancara']) {
     case '1':
-        $wawancara = "<li><a class=\"wawancara\" href=\"?pg=wawancara\">Wawancara</a></li>";
+        $wawancara = "
+        <li>
+            <a class=\"wawancara\" href=\"javascript:void(0)\">Wawancara</a>
+            <ul>
+                <li><a href=\"?pg=wawancara\">Input Wawancara</a></li>
+                <li><a href=\"?pg=hasil-wawancara\">Lihat Hasil Wawancara</a></li>
+            </ul>
+        </li>";
         break;
     case '0':
         $wawancara = '';
@@ -73,7 +80,14 @@ switch ($row['role_seleksi']) {
 }
 switch ($row['role_quisioner']) {
     case '1':
-        $quisioner = "<li><a class=\"quisioner\" href=\"?pg=quisioner\">Quisioner</a></li>";
+        $quisioner = "
+        <li>
+            <a class=\"quisioner\" href=\"javascript:void(0)\">Quisioner</a>
+            <ul>
+                <li><a href=\"?pg=quisioner\">Input Quisioner</a></li>
+                <li><a href=\"?pg=hasil-quisioner\">Lihat Hasil Quisioner</a></li>
+            </ul>
+        </li>";
         break;
     case '0':
         $quisioner = '';
@@ -84,7 +98,7 @@ switch ($row['role_quisioner']) {
 }
 
 $header = "
-<ul>
+<ul class=\"nav\">
     <li><a class=\"home\" href=\"?pg=home\">Home</a></li>
     <li><a class=\"calonsantri\" href=\"?pg=calonsantri\">Calon Santri</a></li>
     $pendaftaran
