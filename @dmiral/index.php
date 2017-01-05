@@ -39,6 +39,9 @@ switch($pg)
 	case "hasil-quisioner":
 		include "pages/hasil-quisioner.php";
 	break;
+	case "seleksi-tkd":
+		include "pages/seleksi-tkd.php";
+	break;
 	case "logout":
 		include "pages/logout.php";
 	break;

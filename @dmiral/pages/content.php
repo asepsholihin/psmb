@@ -10,7 +10,11 @@ $sql = "SELECT
 ( SELECT COUNT(replid) FROM calonsiswa WHERE aktif=1 AND is_konfirmasi='1' ) AS jmlkonfirmasi,
 ( SELECT COUNT(replid) FROM calonsiswa WHERE aktif=1 AND transaksi='transfer' ) AS jmltransfer,
 ( SELECT COUNT(replid) FROM calonsiswa WHERE aktif=1 AND transaksi='tunai' ) AS jmltunai,
-( SELECT COUNT(replid) FROM calonsiswa WHERE aktif=1 AND transaksi='free' ) AS jmlfree";
+( SELECT COUNT(replid) FROM calonsiswa WHERE aktif=1 AND transaksi='free' ) AS jmlfree,
+( SELECT COUNT(replid) FROM calonsiswa WHERE aktif=1 AND info2='15-01-2017' ) AS jmltgl1,
+( SELECT COUNT(replid) FROM calonsiswa WHERE aktif=1 AND info2='29-01-2017' ) AS jmltgl2,
+( SELECT COUNT(replid) FROM calonsiswa WHERE aktif=1 AND info2='12-02-2017' ) AS jmltgl3,
+( SELECT COUNT(replid) FROM calonsiswa WHERE aktif=1 AND info2='26-02-2017' ) AS jmltgl4";
 $query = mysql_query($sql);
 $no = 1;
 $row = mysql_fetch_assoc($query);
@@ -61,6 +65,24 @@ $content = "
         <h1>".$row['jmllulus']."</h1>
         Santri Lulus
     </div>-->
+</div>
+<div class=\"wrapbox\">
+    <div class=\"countbox\">
+        <h1>".$row['jmltgl1']."</h1>
+        Tes 15-01-2017
+    </div>
+    <div class=\"countbox\">
+        <h1>".$row['jmltgl2']."</h1>
+        Tes 29-01-2017
+    </div>
+    <div class=\"countbox\">
+        <h1>".$row['jmltgl3']."</h1>
+        Tes 12-02-2017
+    </div>
+    <div class=\"countbox\">
+        <h1>".$row['jmltgl4']."</h1>
+        Tes 26-02-2017
+    </div>
 </div>
 
 <script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js\"></script>

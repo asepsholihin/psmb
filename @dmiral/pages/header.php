@@ -69,7 +69,14 @@ switch ($row['role_wawancara']) {
 }
 switch ($row['role_seleksi']) {
     case '1':
-        $seleksi = "<li><a class=\"seleksi\" href=\"?pg=seleksi\">Seleksi</a></li>";
+        $seleksi = "
+        <li>
+            <a class=\"seleksi\" href=\"javascript:void(0)\">Seleksi</a>
+            <ul>
+                <li><a href=\"?pg=seleksi-tkd\">TKD</a></li>
+                <li><a href=\"?pg=\">Al-Qur'an</a></li>
+            </ul>
+        </li>";
         break;
     case '0':
         $seleksi = '';
