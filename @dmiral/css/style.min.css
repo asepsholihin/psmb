@@ -282,6 +282,13 @@ a.username:hover {
     height: 100px;
     font-family: sans-serif;
 }
+.number {
+    width: 30px;
+    border: 0;
+    background: transparent;
+    font-family: sans-serif;
+    text-align: center;
+}
 .search {
     width: 100%;
     margin: 10px;
