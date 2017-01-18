@@ -40,7 +40,15 @@ switch ($row['role_user']) {
 }
 switch ($row['role_pemberkasan']) {
     case '1':
-        $pemberkasan = "<li><a class=\"pemberkasan\" href=\"?pg=pemberkasan\">Pemberkasan</a></li>";
+        $pemberkasan = "
+        <li><a class=\"pemberkasan\" href=\"?pg=pemberkasan\">Pemberkasan</a>
+            <ul>
+                <li><a href=\"pages/daftarberkas.php?tanggal=15-01-2017\" target=\"_blank\">Cetak 15-01-2017</a></li>
+                <li><a href=\"pages/daftarberkas.php?tanggal=29-01-2017\" target=\"_blank\">Cetak 29-01-2017</a></li>
+                <li><a href=\"pages/daftarberkas.php?tanggal=12-02-2017\" target=\"_blank\">Cetak 12-02-2017</a></li>
+                <li><a href=\"pages/daftarberkas.php?tanggal=26-02-2017\" target=\"_blank\">Cetak 26-02-2017</a></li>
+            </ul>
+        </li>";
         break;
     case '0':
         $pemberkasan = '';

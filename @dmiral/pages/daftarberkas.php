@@ -12,7 +12,17 @@ while($row=mysql_fetch_array($query)) {
 		<td>".$row['nopendaftaran']."</td>
 		<td>".ucwords(strtolower($row['nama']))."</td>
 		<td>".$row['asalsekolah']."</td>
-		<td>".$row['hportu']."</td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
+		<td></td>
 	</tr>
 	";
 	$no++;
@@ -27,6 +37,7 @@ table {
 }
 table td {
 	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
 	padding: 5px;
 }
 table th {
@@ -43,7 +54,17 @@ table th {
 		<th>No. Pendaftaran</th>
 		<th>Nama</th>
 		<th>Asal Sekolah</th>
-		<th>Handphone</th>
+		<th>Biodata</th>
+		<th>Akta</th>
+		<th>KTP</th>
+		<th>KK</th>
+		<th>NISN</th>
+		<th>Rapor</th>
+		<th>SP</th>
+		<th>Foto</th>
+		<th>Komitmen</th>
+		<th>Quis Santri</th>
+		<th>Quis Ortu</th>
 
 	</tr>
 	<?php echo $data; ?>
