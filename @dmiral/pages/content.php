@@ -68,19 +68,19 @@ $content = "
 </div>
 <div class=\"wrapbox\">
     <div class=\"countbox\">
-        <h1>".$row['jmltgl1']."</h1>
+        <a href=\"pages/daftartes.php?tanggal=15-01-2017\" target=\"_blank\"><h1>".$row['jmltgl1']."</h1></a>
         Tes 15-01-2017
     </div>
     <div class=\"countbox\">
-        <h1>".$row['jmltgl2']."</h1>
+        <a href=\"pages/daftartes.php?tanggal=29-01-2017\" target=\"_blank\"><h1>".$row['jmltgl2']."</h1></a>
         Tes 29-01-2017
     </div>
     <div class=\"countbox\">
-        <h1>".$row['jmltgl3']."</h1>
+        <a href=\"pages/daftartes.php?tanggal=12-02-2017\" target=\"_blank\"><h1>".$row['jmltgl3']."</h1></a>
         Tes 12-02-2017
     </div>
     <div class=\"countbox\">
-        <h1>".$row['jmltgl4']."</h1>
+        <a href=\"pages/daftartes.php?tanggal=26-02-2017\" target=\"_blank\"><h1>".$row['jmltgl4']."</h1></a>
         Tes 26-02-2017
     </div>
 </div>

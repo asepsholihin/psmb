@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 $data = "";
-$sql = "SELECT a.nopendaftaran as 'id', a.nama, b.* from calonsiswa a LEFT JOIN berkas b ON a.nopendaftaran = b.nopendaftaran WHERE a.nopendaftaran!=''";
+$sql = "SELECT a.nopendaftaran as 'id', a.nama, b.* from calonsiswa a LEFT JOIN berkas b ON a.nopendaftaran = b.nopendaftaran WHERE a.nopendaftaran!='' AND aktif=1";
 $query = mysql_query($sql);
 $no = 1;
 while($row = mysql_fetch_assoc($query))
