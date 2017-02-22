@@ -57,6 +57,18 @@ switch ($row['role_pemberkasan']) {
         # code...
         break;
 }
+
+switch ($row['role_pemberkasan']) {
+    case '1':
+        $raport = "<li><a class=\"raport\" href=\"?pg=raport\">Raport</a></li>";
+        break;
+    case '0':
+        $raport = '';
+        break;
+    default:
+        # code...
+        break;
+}
 switch ($row['role_wawancara']) {
     case '1':
         $wawancara = "
@@ -113,6 +125,7 @@ $header = "
     $pendaftaran
     $kelulusan
     $pemberkasan
+    $raport
     $wawancara
     $seleksi
     $quisioner

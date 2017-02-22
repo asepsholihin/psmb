@@ -128,6 +128,7 @@ bahasa='".$_POST['bahasa']."',
 berat='".$_POST['berat']."',
 tinggi='".$_POST['tinggi']."',
 darah='".$_POST['darah']."',
+foto='',
 alamatsiswa='".addslashes($_POST['alamatsiswa'])."',
 jarak='".$_POST['jaraksekolah']."',
 kodepossiswa='".$_POST['kodepossiswa']."',
@@ -327,8 +328,7 @@ if($_POST['nama'] == ""){
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;BSM KCP Subang : 7099 777 669</strong><br>
             2. Konfirmasi bukti transfer (pilih ke salah satu cara) :<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>a. Dilampirkan via email ke : psb.mtms@gmail.com (untuk santri SMP), pmb.mtms@gmail.com (untuk santri Ma'had)<br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b. via sms atau WA : 0857 2005 1808</strong><br>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; c. via sms atau WA : 0896 7876 6935 | 0877 2658 2425 | 0817 848 680 | 0812 2431 8410</strong><br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; b. via sms atau WA : 0896 7876 6935 | 0877 2658 2425 | 0817 848 680 | 0812 2431 8410</strong><br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Jangan lupa, tuliskan nama lengkap calon santri.<br>
             3. Dalam waktu maksimal 3 x 24 jam, Anda akan memperoleh No. Pendaftaran, silahkan tunggu email notifikasi berikutnya.<br><br>
 

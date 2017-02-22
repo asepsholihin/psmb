@@ -47,6 +47,8 @@
             <div class="alert alert-success alert-dismissible" role="alert" hidden />
             Username dan Password telah dikirim melalui email orangtua, dan silahkan login di anjungan PSMB Marifatussalaam klik <a href="http://psmb.marifatussalaam.org/anjungan" class="alert-link">disini</a>
             </div>
+            
+            <div style="background: #f5e1e1;border: 1px solid #f99191;" class="alert alert-dismissible" role="alert" />Jika menemukan tanda bintang (*) harap wajib diisi, apabila belum ada datanya silahkan diisikan 0</div>
 
             <form id="form">
             	<input type="hidden" name="registrasi" value="website"/>
@@ -68,14 +70,14 @@
                                     <input maxlength="100" type="text" name="noun" class="form-control" placeholder="No Ujian Nasional" />
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Nama Lengkap</label>
+                                    <label class="control-label">Nama Lengkap (*)</label>
                                     <input maxlength="100" type="text" name="nama" required class="form-control" placeholder="Nama Lengkap" />
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">Nama Panggilan</label>
-                                    <input maxlength="100" type="text" name="panggilan" required class="form-control" placeholder="Nama Panggilan" />
+                                    <input maxlength="100" type="text" name="panggilan" class="form-control" placeholder="Nama Panggilan" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Jenis Kelamin</label><br>
@@ -87,7 +89,7 @@
                                     </label>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Tempat Lahir</label>
+                                    <label class="control-label">Tempat Lahir (*)</label>
                                     <input maxlength="100" type="text" name="tmplahir" required class="form-control" placeholder="Tempat Lahir" />
                                 </div>
                                 <div class="form-group">
@@ -211,7 +213,7 @@
                         <div class="row">
                             <div class="col-md-4">
                                 <div class="form-group">
-                                    <label class="control-label">Anak ke</label>
+                                    <label class="control-label">Anak ke (*)</label>
                                     <input maxlength="100" type="text" name="anakke" required class="form-control" placeholder="0" />
                                 </div>
                                 <div class="form-group">
@@ -224,7 +226,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Jumlah Saudara Kandung</label>
+                                    <label class="control-label">Jumlah Saudara Kandung (*)</label>
                                     <input maxlength="100" type="text" name="jmlsodara" required class="form-control" placeholder="0" />
                                 </div>
                                 <div class="form-group">
@@ -235,10 +237,10 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label class="control-label">Bahasa</label>
-                                    <input maxlength="100" type="text" name="bahasa" required class="form-control" placeholder="contoh: Indonesia" />
+                                    <input maxlength="100" type="text" name="bahasa" class="form-control" placeholder="contoh: Indonesia" />
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Alamat</label>
+                                    <label class="control-label">Alamat (*)</label>
                                     <textarea class="form-control" name="alamatsiswa" required rows="1"></textarea>
                                 </div>
                                 <div class="form-group">
@@ -287,14 +289,14 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Berat</label>
+                                <label class="control-label">Berat (*)</label>
                                 <div class="input-group">
                                   <input maxlength="3" type="text" name="berat" required class="form-control" id="exampleInputAmount" placeholder="0">
                                   <div class="input-group-addon">Kg</div>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label">Tinggi</label>
+                                <label class="control-label">Tinggi (*)</label>
                                 <div class="input-group">
                                   <input maxlength="3" type="text" name="tinggi" required class="form-control" id="exampleInputAmount" placeholder="0">
                                   <div class="input-group-addon">Cm</div>
@@ -308,7 +310,7 @@
                         <div class="col-md-6">
                             <h3>Data Sekolah Calon Santri</h3>
                             <div class="form-group">
-                                <label class="control-label">Asal Sekolah</label>
+                                <label class="control-label">Asal Sekolah (*)</label>
                                 <input maxlength="100" type="text" name="asalsekolah" required class="form-control" placeholder="Asal Sekolah" />
                             </div>
                             <div class="form-group">
@@ -321,7 +323,7 @@
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Alamat Sekolah</label>
-                                <input maxlength="100" type="text" name="alamatsekolah" required class="form-control" placeholder="Alamat Sekolah" />
+                                <input maxlength="100" type="text" name="alamatsekolah" class="form-control" placeholder="Alamat Sekolah" />
                             </div>
                             <button class="btn btn-primary nextBtn btn-md pull-right" type="button" >Lanjutkan</button>
                         </div>
@@ -334,7 +336,7 @@
                             <div class="col-md-6">
                                 <h3>Data Orangtua Calon Santri (Ayah)</h3>
                                 <div class="form-group">
-                                    <label class="control-label">Nama Ayah</label>
+                                    <label class="control-label">Nama Ayah (*)</label>
                                     <input maxlength="100" type="text" name="namaayah" required class="form-control" placeholder="Nama Ayah" />
                                 </div>
                                 <div class="form-group">
@@ -355,11 +357,11 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Tempat Lahir</label>
+                                    <label class="control-label">Tempat Lahir (*)</label>
                                     <input maxlength="100" type="text" name="tmplahirayah" required class="form-control" placeholder="Tempat Lahir" />
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Tanggal Lahir</label>
+                                    <label class="control-label">Tanggal Lahir (*)</label>
                                     <input maxlength="100" type="text" name="tgllahirayah" required class="form-control" placeholder="Contoh: 20-03-1985" />
                                 </div>
                                 <div class="form-group">
@@ -397,7 +399,7 @@
                             <div class="col-md-6">
                                 <h3>Data Orangtua Calon Santri (Ibu)</h3>
                                 <div class="form-group">
-                                    <label class="control-label">Nama Ibu</label>
+                                    <label class="control-label">Nama Ibu (*)</label>
                                     <input maxlength="100" type="text" name="namaibu" required class="form-control" placeholder="Nama Ibu" />
                                 </div>
                                 <div class="form-group">
@@ -418,11 +420,11 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Tempat Lahir</label>
+                                    <label class="control-label">Tempat Lahir (*)</label>
                                     <input maxlength="100" type="text" name="tmplahiribu" required class="form-control" placeholder="Tempat Lahir" />
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Tanggal Lahir</label>
+                                    <label class="control-label">Tanggal Lahir (*)</label>
                                     <input maxlength="100" type="text" name="tgllahiribu" required class="form-control" placeholder="Contoh: 20-03-1985" />
                                 </div>
                                 <div class="form-group">
@@ -462,15 +464,15 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label class="control-label">Email Ayah/Ibu</label>
+                                    <label class="control-label">Email Ayah/Ibu (*)</label>
                                     <input maxlength="100" type="text" name="emailayah" required class="form-control" placeholder="Email Ayah/Ibu salah satu saja" />
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label">Wali</label>
-                                    <input maxlength="100" type="text" name="wali" required class="form-control" placeholder="Nama Wali" />
+                                    <input maxlength="100" type="text" name="wali" class="form-control" placeholder="Nama Wali" />
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Alamat Orangtua/Wali</label>
+                                    <label class="control-label">Alamat Orangtua/Wali (*)</label>
                                     <input maxlength="100" type="text" name="alamatortu" required class="form-control" placeholder="Alamat Orangtua/Wali" />
                                 </div>
                                 <div class="form-group">
@@ -478,7 +480,7 @@
                                     <input maxlength="100" type="text" name="telponortu" class="form-control" placeholder="Telpon / Kontak yang bisa dihubungi" />
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label">Hanphone</label>
+                                    <label class="control-label">Hanphone (*)</label>
                                     <input maxlength="12" type="text" name="hportu" required class="form-control" placeholder="Nomor Handphone Orangtua salah satu saja" />
                                 </div>
                                 <div class="form-group">

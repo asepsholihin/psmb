@@ -32,8 +32,8 @@ q015 = '".$_POST['quis15']."',
 q016 = '".$_POST['quis16']."',
 q017 = '".$_POST['quis17']."',
 q018 = '".$_POST['quis18']."',
-q019 = '".$_POST['quis19']."',
-q020 = '".$_POST['quis20']."'
+q019 = '".addslashes($_POST['quis19'])."',
+q020 = '".addslashes($_POST['quis20'])."'
 ";
 
 if($_POST['nopendaftaran'] != null) {

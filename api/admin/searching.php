@@ -10,7 +10,7 @@ $sql = "SELECT nama, nopendaftaran from calonsiswa where aktif='1' and nama like
 $query = mysql_query($sql);
 if($query){
 	while($row = mysql_fetch_assoc($query)) {
-		echo "<li><a onclick=\"setsearch('".ucwords(strtolower($row['nama']))."','".$row['nopendaftaran']."')\" href=\"javascript:void(0)\">".$row['nama']." <br> ".$row['nopendaftaran']."</a></li>";
+		echo "<li><a onclick=\"setsearch('".addslashes(ucwords(strtolower($row['nama'])))."','".$row['nopendaftaran']."')\" href=\"javascript:void(0)\">".$row['nama']." <br> ".$row['nopendaftaran']."</a></li>";
 	}
     
 } else {

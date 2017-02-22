@@ -128,7 +128,7 @@ $(document).ready(function(){
 });
 function edit(idclass){
     $('.loading').show();
-    $.post('../api/admin/nilaiseleksi.php', $('#form'+idclass+'').serialize(), function(data) {
+    $.post('http://api.marifatussalaam.org/admin/nilaiseleksi.php', $('#form'+idclass+'').serialize(), function(data) {
         var obj = JSON.parse(data);
         if (!obj.error) {
             window.location.href = '?pg=seleksi';

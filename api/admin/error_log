@@ -4,3 +4,5 @@
 [16-Nov-2016 18:33:19 UTC] PHP Warning:  mysql_close() expects parameter 1 to be resource, null given in /home/marifatu/api/admin/lulus.php on line 142
 [16-Nov-2016 18:39:42 UTC] PHP Warning:  mysql_close() expects parameter 1 to be resource, null given in /home/marifatu/api/admin/lulus.php on line 143
 [16-Nov-2016 18:45:39 UTC] PHP Warning:  mysql_close() expects parameter 1 to be resource, null given in /home/marifatu/api/admin/lulus.php on line 143
+[05-Jan-2017 12:19:57 UTC] PHP Warning:  implode(): Invalid arguments passed in /home/marifatu/api/admin/lulus.php on line 10
+[05-Jan-2017 12:19:57 UTC] PHP Warning:  mysql_close() expects parameter 1 to be resource, null given in /home/marifatu/api/admin/lulus.php on line 143

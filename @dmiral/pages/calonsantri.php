@@ -21,17 +21,25 @@ while($row = mysql_fetch_assoc($query))
     }
     if($row['info2'] == ""){
         $tgltes = "
-            <a class=\"ic-tanggal".$no."\" onclick=\"ubahtanggal('tanggal".$no."')\" href=\"javascript:void(0)\"><img src=\"img/edit.png\" /></a>
-            <div class=\"tanggal tanggal".$no." hidden\">
+            <div class=\"tanggal \">
             <form id=\"form".$no."\">
                 <input type=\"hidden\" name=\"hportu\" value=\"".$row['hportu']."\">
-                <input type=\"date\" name=\"info2\" value=\"".date('Y-m-d')."\">
-                <button class=\"button-small\" type=\"button\" onclick=\"edit('".$no."')\">Simpan</button>
+                <input type=\"date\" onclick=\"ubahtanggaldirect('tanggal".$no."')\" class=\"tgltes\" name=\"info2\">
+                <button class=\"button-small tanggal".$no." hidden\" type=\"button\" onclick=\"edit('".$no."')\">Simpan</button>
             </form>
             </div>
         ";
     } else {
-        $tgltes = date_format(date_create($row['info2']),"d-m-Y");
+        //$tgltes = date_format(date_create($row['info2']),"d-m-Y");
+        $tgltes = "
+            <div class=\"tanggal \">
+            <form id=\"form".$no."\">
+                <input type=\"hidden\" name=\"hportu\" value=\"".$row['hportu']."\">
+                <input type=\"date\" onclick=\"ubahtanggaldirect('tanggal".$no."')\" class=\"tgltes\" name=\"info2\" value=\"".date_format(date_create($row['info2']),"Y-m-d")."\">
+                <button class=\"button-small tanggal".$no." hidden\" type=\"button\" onclick=\"edit('".$no."')\">Simpan</button>
+            </form>
+            </div>
+        ";
     }
     $tgl_daftar = date_create($row['ts']);
     $data.="
@@ -49,12 +57,12 @@ while($row = mysql_fetch_assoc($query))
     </tr>
     ";
     $no++;
-    
+
     $date = date_create($row['tgl_konfirmasi']);
 }
 
 $content = "
-$kwitansi 
+$kwitansi
 <link rel=\"stylesheet\" type=\"text/css\" href=\"//cdn.datatables.net/1.10.12/css/jquery.dataTables.css\">
 <table id=\"table_id\" class=\"display\">
 	<thead>
@@ -102,9 +110,14 @@ function ubahtanggal(idclass){
     $('.'+idclass+'').removeClass( 'hidden' );
 }
 
+function ubahtanggaldirect(idclass) {
+    $('.button-small').addClass( 'hidden' );
+    $('.'+idclass+'').removeClass( 'hidden' );
+}
+
 function edit(idclass){
     $('.loading').show();
-    $.post('../api/admin/tanggalseleksi.php', $('#form'+idclass+'').serialize(), function(data) {
+    $.post('http://api.marifatussalaam.org/admin/tanggalseleksi.php', $('#form'+idclass+'').serialize(), function(data) {
         var obj = JSON.parse(data);
         if (!obj.error) {
             window.location.href = '?pg=calonsantri';

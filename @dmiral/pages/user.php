@@ -231,8 +231,8 @@ $content = "
 			<th class=\"center no-sort\">Pendaftaran</th>
 			<th class=\"center no-sort\">Kelulusan</th>
             <th class=\"center no-sort\">Pemberkasan</th>
-            <th class=\"center no-sort\">Wawancara</th>
             <th class=\"center no-sort\">Seleksi</th>
+            <th class=\"center no-sort\">Wawancara</th>
             <th class=\"center no-sort\">Quisioner</th>
 			<th class=\"center no-sort\">User</th>
 			<th class=\"center no-sort center\" width=\"80\"><a href=\"#\" onclick=\"tambahin()\"><img src=\"css/user.png\"></a></th>
@@ -242,7 +242,7 @@ $content = "
         $form
 		$data
     </tbody>
-</table>
+</table>http://api.marifatussalaam.org/
 
 <div class=\"loading\">Loading</div>
 
@@ -263,7 +263,7 @@ $(document).ready(function(){
 });
 function edit(idclass){
     $('.loading').show();
-    $.post('../api/admin/user.php', $('#form'+idclass+'').serialize(), function(data) {
+    $.post('http://api.marifatussalaam.org/admin/user.php', $('#form'+idclass+'').serialize(), function(data) {
         var obj = JSON.parse(data);
         if (!obj.error) {
             window.location.href = '?pg=user';

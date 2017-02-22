@@ -24,7 +24,7 @@ while($row = mysql_fetch_assoc($query))
         <td>".$no."</td>
         <td>
             <div class=\"Checkbox\">
-                <input type=\"checkbox\" onclick=\"konfirmasi('".$row['hportu']."', '".$_SESSION["session_name"]."', 'tunai')\" name=\"tunai\" /><div class=\"Checkbox-visible\"></div>
+                <input type=\"checkbox\" onclick=\"konfirmasi('".$row['hportu']."', '".$_SESSION["session_name"]."' ,'tunai')\" name=\"tunai\" /><div class=\"Checkbox-visible\"></div>
             </div>
         </td>
         <td>
@@ -91,7 +91,7 @@ function konfirmasi(id,petugas,type){
     $('.loading').show();
     var r = confirm('Yakin dia udah bayar?');
     if (r == true) {
-        $.post('../api/admin/konfirmasi.php',
+        $.post('http://api.marifatussalaam.org/admin/konfirmasi.php',
         {
             id:id,
             petugas:petugas,

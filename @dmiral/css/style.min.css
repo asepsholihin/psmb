@@ -47,7 +47,7 @@ ul.nav li a {
 }
 
 
-li a:hover:not(.active) {    
+li a:hover:not(.active) {
     background-color: #9d71e2;
     color: #fff !important;
     border-bottom: 2px solid #aaa;
@@ -65,7 +65,7 @@ ul.nav li ul {
     display: none;
 }
 
-ul.nav li ul li a {    
+ul.nav li ul li a {
     background: #fff;
     transition: all 0.2s;
     display: block;
@@ -92,7 +92,7 @@ ul.nav li:hover ul{
 }
 
 .radio-toolbar input[type="radio"] {
-    display:none; 
+    display:none;
 }
 
 .radio-toolbar label {
@@ -107,7 +107,7 @@ ul.nav li:hover ul{
     line-height: 16px;
 }
 
-.radio-toolbar input[type="radio"]:checked + label { 
+.radio-toolbar input[type="radio"]:checked + label {
     background-color:#9d71e2;
     color: #fff;
 }
@@ -325,4 +325,9 @@ a.username:hover {
     width: 100%;
     padding: 8px;
     text-align: center;
+}
+.tgltes {
+    width: 100%;
+    border: none;
+    background: transparent;
 }

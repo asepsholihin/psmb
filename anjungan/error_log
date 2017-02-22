@@ -28,3 +28,6 @@
 [17-Nov-2016 06:34:16 UTC] PHP Parse error:  syntax error, unexpected 'All' (T_STRING) in /home/marifatu/public_html/psmb/@dmiral/pages/user.php on line 137
 [17-Nov-2016 06:37:32 UTC] PHP Parse error:  syntax error, unexpected ':' in /home/marifatu/public_html/psmb/@dmiral/pages/user.php on line 137
 [17-Nov-2016 07:32:49 UTC] PHP Parse error:  syntax error, unexpected ')' in /home/marifatu/public_html/psmb/@dmiral/pages/calonsantri.php on line 29
+[20-Jan-2017 02:51:26 UTC] PHP Warning:  mysql_connect(): No such file or directory in /home/marifatu/public_html/psmb/anjungan/config.php on line 5
+[20-Jan-2017 02:51:26 UTC] PHP Warning:  mysql_select_db(): No such file or directory in /home/marifatu/public_html/psmb/anjungan/config.php on line 7
+[20-Jan-2017 02:51:26 UTC] PHP Warning:  mysql_select_db(): A link to the server could not be established in /home/marifatu/public_html/psmb/anjungan/config.php on line 7
