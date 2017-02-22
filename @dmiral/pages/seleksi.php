@@ -55,7 +55,7 @@ while($row = mysql_fetch_assoc($query))
         <input type=\"hidden\" name=\"nopendaftaran\" value=\"".$row['id']."\">
         <input type=\"hidden\" name=\"petugas\" value=\"".$_SESSION['session_name']."\">
         <td>".$no."</td>
-        <td>".ucwords(strtolower($row['nama']))."</td> 
+        <td>".ucwords(strtolower($row['nama']))."</td>
         <td class=\"center\">
             <input onclick=\"editor('editor".$no."')\" class=\"number\" name=\"tkd\" maxlength=\"3\" value=\"".$tkd."\" type=\"text\">
         </td>
@@ -128,7 +128,7 @@ $(document).ready(function(){
 });
 function edit(idclass){
     $('.loading').show();
-    $.post('http://api.marifatussalaam.org/admin/nilaiseleksi.php', $('#form'+idclass+'').serialize(), function(data) {
+    $.post('../api/admin/nilaiseleksi.php', $('#form'+idclass+'').serialize(), function(data) {
         var obj = JSON.parse(data);
         if (!obj.error) {
             window.location.href = '?pg=seleksi';

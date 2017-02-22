@@ -73,7 +73,7 @@ function lulus(){
     }).get();
     var r = confirm('Yakin mereka lulus?');
     if (r == true) {
-        $.post('http://api.marifatussalaam.org/admin/lulus.php',
+        $.post('../api/admin/lulus.php',
         {
             id: checkedValues
         },

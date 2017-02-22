@@ -91,7 +91,7 @@ function konfirmasi(id,petugas,type){
     $('.loading').show();
     var r = confirm('Yakin dia udah bayar?');
     if (r == true) {
-        $.post('http://api.marifatussalaam.org/admin/konfirmasi.php',
+        $.post('../api/admin/konfirmasi.php',
         {
             id:id,
             petugas:petugas,

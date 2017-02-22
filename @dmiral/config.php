@@ -4,7 +4,7 @@ $dbuser = 'root';
 $dbpass = '';
 $koneksi = mysql_connect($dbhost, $dbuser, $dbpass);
 
-mysql_select_db('marifatussalaam');
+mysql_select_db('psmb');
 
 if(! $koneksi )
 {

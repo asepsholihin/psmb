@@ -120,7 +120,7 @@ while($row = mysql_fetch_assoc($query))
                 <input name=\"raport\" onclick=\"editor('editor".$no."')\" type=\"checkbox\" ".$raport." value=\"1\"/><div class=\"Checkbox-visible\"></div>
             </div>
         </td>
-        <td> 
+        <td>
             <div class=\"Checkbox\">
                 <input name=\"foto\" onclick=\"editor('editor".$no."')\" type=\"checkbox\" ".$foto." value=\"1\"/><div class=\"Checkbox-visible\"></div>
             </div>
@@ -176,7 +176,7 @@ $(document).ready(function(){
 });
 function edit(idclass){
     $('.loading').show();
-    $.post('http://api.marifatussalaam.org/admin/berkas.php', $('#form'+idclass+'').serialize(), function(data) {
+    $.post('../api/admin/berkas.php', $('#form'+idclass+'').serialize(), function(data) {
         var obj = JSON.parse(data);
         if (!obj.error) {
             window.location.href = '?pg=pemberkasan';
