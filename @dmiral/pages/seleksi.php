@@ -16,6 +16,21 @@ while($row = mysql_fetch_assoc($query))
             $tkd = $row['tkd'];
             break;
     }
+
+    $jmltkd = $tkd;
+
+    if($jmltkd >= 60 && $jmltkd < 70) {
+      $totaltkd = "<div style='background:#e6d500;color:#e6d500'>".$jmltkd."</div>";
+    } else if($jmltkd >= 70 && $jmltkd < 80) {
+      $totaltkd = "<div style='background:#47b147;color:#47b147'>".$jmltkd."</div>";
+    } else if($jmltkd >= 80 && $jmltkd < 90) {
+      $totaltkd = "<div style='background:#5a91e2;color:#5a91e2'>".$jmltkd."</div>";
+    } else if($jmltkd >= 90 && $jmltkd <= 100) {
+      $totaltkd = "<div style='background:#9d71e2;color:#9d71e2'>".$jmltkd."</div>";
+    } else {
+      $totaltkd = "<div style='background:#f13b3b;color:#f13b3b'>".$jmltkd."</div>";
+    }
+
     switch ($row['bacaan']) {
         case '':
             $bacaan = '0';
@@ -49,13 +64,27 @@ while($row = mysql_fetch_assoc($query))
             break;
     }
 
+    $jmlquran = $bacaan + $tajwid + $hafalan + $sholat;
+
+    if($jmlquran >= 60 && $jmlquran < 70) {
+      $totalquran = "<div style='background:#e6d500;color:#fff;text-align:center;padding:8px;'>".$jmlquran."</div>";
+    } else if($jmlquran >= 70 && $jmlquran < 80) {
+      $totalquran = "<div style='background:#47b147;color:#fff;text-align:center;padding:8px;'>".$jmlquran."</div>";
+    } else if($jmlquran >= 80 && $jmlquran < 90) {
+      $totalquran = "<div style='background:#5a91e2;color:#fff;text-align:center;padding:8px;'>".$jmlquran."</div>";
+    } else if($jmlquran >= 90 && $jmlquran <= 100) {
+      $totalquran = "<div style='background:#9d71e2;color:#fff;text-align:center;padding:8px;'>".$jmlquran."</div>";
+    } else {
+      $totalquran = "<div style='background:#f13b3b;color:#fff;text-align:center;padding:8px;'>".$jmlquran."</div>";
+    }
+
     $data.="
     <tr>
         <form id=\"form".$no."\">
         <input type=\"hidden\" name=\"nopendaftaran\" value=\"".$row['id']."\">
         <input type=\"hidden\" name=\"petugas\" value=\"".$_SESSION['session_name']."\">
         <td>".$no."</td>
-        <td>".ucwords(strtolower($row['nama']))."</td>
+        <td>".ucwords(strtolower($row['nama']))." </td>
         <td class=\"center\">
             <input onclick=\"editor('editor".$no."')\" class=\"number\" name=\"tkd\" maxlength=\"3\" value=\"".$tkd."\" type=\"text\">
         </td>
@@ -70,6 +99,9 @@ while($row = mysql_fetch_assoc($query))
         </td>
         <td class=\"center\">
             <input onclick=\"editor('editor".$no."')\" class=\"number\" name=\"sholat\" maxlength=\"3\" value=\"".$sholat."\" type=\"text\">
+        </td>
+        <td class=\"center\">
+            ".$totalquran."
         </td>
         <td class=\"center\">
             <textarea class=\"catatan cateditor".$no."\" onclick=\"editor('editor".$no."')\" name=\"catatan\">".$row['catatan']."</textarea>
@@ -92,16 +124,20 @@ $content = "
 <table id=\"table_id\" class=\"display\">
     <thead>
         <tr>
-            <th class=\"no-sort\" width=\"1\">No</th>
-            <th>Nama</th>
-            <th class=\"center no-sort\">TKD</th>
+            <th rowspan=\"2\" class=\"no-sort\" width=\"1\">No</th>
+            <th rowspan=\"2\">Nama</th>
+            <th rowspan=\"2\" class=\"center no-sort\">TKD</th>
+            <th colspan=\"5\" class=\"center no-sort\">Tes Qur'an</th>
+            <th rowspan=\"2\" class=\"center no-sort\">Catatan</th>
+            <th rowspan=\"2\" class=\"center no-sort\">Petugas</th>
+            <th rowspan=\"2\" class=\"no-sort\">Tanggal</th>
+        </tr>
+        <tr>
             <th class=\"center no-sort\">Bacaan</th>
             <th class=\"center no-sort\">Tajwid</th>
             <th class=\"center no-sort\">Hafalan</th>
             <th class=\"center no-sort\">Sholat</th>
-            <th class=\"center no-sort\">Catatan</th>
-            <th class=\"center no-sort\">Petugas</th>
-            <th class=\"no-sort\">Tanggal</th>
+            <th class=\"center no-sort\">Total</th>
         </tr>
     </thead>
     <tbody>

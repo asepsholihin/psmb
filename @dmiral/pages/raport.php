@@ -13,15 +13,15 @@ while($row = mysql_fetch_assoc($query))
     $avg = number_format($sum / 12, 2,",",".");
 
     if($avg >= 60 && $avg < 70) {
-      $average = "<div style='background:#e6d500;color:#fff'>".$avg."</div>";
+      $average = "<div style='background:#e6d500;color:#fff;text-align:center;padding:8px;'>".$avg."</div>";
     } else if($avg >= 70 && $avg < 80) {
-      $average = "<div style='background:#47b147;color:#fff'>".$avg."</div>";
+      $average = "<div style='background:#47b147;color:#fff;text-align:center;padding:8px;'>".$avg."</div>";
     } else if($avg >= 80 && $avg < 90) {
-      $average = "<div style='background:#5a91e2;color:#fff'>".$avg."</div>";
+      $average = "<div style='background:#5a91e2;color:#fff;text-align:center;padding:8px;'>".$avg."</div>";
     } else if($avg >= 90 && $avg <= 100) {
-      $average = "<div style='background:#9d71e2;color:#fff'>".$avg."</div>";
+      $average = "<div style='background:#9d71e2;color:#fff;text-align:center;padding:8px;'>".$avg."</div>";
     } else {
-      $average = "<div style='background:#f13b3b;color:#fff'>".$avg."</div>";
+      $average = "<div style='background:#f13b3b;color:#fff;text-align:center;padding:8px;'>".$avg."</div>";
     }
 
     $data.="
