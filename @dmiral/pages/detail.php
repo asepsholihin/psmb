@@ -2,10 +2,10 @@
 include "../config.php";
 error_reporting(0);
 
-$sql = "SELECT * FROM calonsiswa WHERE hportu='".$_GET['id']."'";
+$sql = "SELECT * FROM calonsiswa WHERE hportu='".urlencode($_GET['id'])."'";
 $query = mysql_query($sql);
 $row = mysql_fetch_assoc($query);
-if($row['kelamin'] == l){
+if($row['kelamin'] == 'l'){
 	$kelamin = "Laki-laki";
 } else {
 	$kelamin = "Perempuan";
@@ -16,7 +16,7 @@ if($row['is_konfirmasi'] == 1){
     $bayar = "Belum";
 }
 echo "
-	
+
 	<style>
 	body {
 	    font-family: calibri;
@@ -88,10 +88,10 @@ echo "
 						<td><strong>".$row['status']."</strong></td>
 					</tr>
 				</table>
-			
+
 			</td>
-			
-			<td>		
+
+			<td>
 				<table class='table-detail'>
 					<tr>
 						<td>Kondisi</td>
@@ -122,7 +122,7 @@ echo "
 						<td>Jumlah Saudara Tiri</td>
 						<td>:</td>
 						<td><strong>".$row['jtiri']."</strong></td>
-					</tr>        
+					</tr>
 					<tr>
 						<td>Golongan Darah</td>
 						<td>:</td>
@@ -152,9 +152,9 @@ echo "
 			</td>
 		</tr>
 	</table>
-	
+
 	<hr>
-	
+
 	<table class='table-detail'>
 	<tr>
 	    <td valign=\"top\">Alamat</td>
@@ -212,9 +212,9 @@ echo "
 	    <td><strong>".$row['alamatsekolah']."</strong></td>
 	</tr>
 	</table>
-	
+
 	<hr>
-	
+
 	<table width='100%' class='table-detail'>
 	<tr>
 	<td>
