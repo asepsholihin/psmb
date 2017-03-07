@@ -263,7 +263,7 @@ $(document).ready(function(){
 });
 function edit(idclass){
     $('.loading').show();
-    $.post('../api/admin/user.php', $('#form'+idclass+'').serialize(), function(data) {
+    $.post('http://localhost/psmb/api/admin/user.php', $('#form'+idclass+'').serialize(), function(data) {
         var obj = JSON.parse(data);
         if (!obj.error) {
             window.location.href = '?pg=user';
@@ -278,7 +278,7 @@ function editor(idclass){
 }
 function tambah(){
     $('.loading').show();
-    $.post('../api/admin/user.php', $('#form-tambah').serialize(), function(data) {
+    $.post('http://localhost/psmb/api/admin/user.php', $('#form-tambah').serialize(), function(data) {
         var obj = JSON.parse(data);
         if (!obj.error) {
             window.location.href = '?pg=user';

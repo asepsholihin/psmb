@@ -85,7 +85,7 @@ $(document).ready(function(){
 
 function searching(e) {
 	console.log(e.value);
-	$.post('../api/admin/searching.php',
+	$.post('http://localhost/psmb/api/admin/searching.php',
 	{
 		search : e.value
 	},
@@ -106,7 +106,7 @@ function simpan(){
     $('.loading').html('Loading');
 
     if($('.nopendaftaran').val() != '' ) {
-    	$.post('../api/admin/quisioner.php', $('#form').serialize(), function(data) {
+    	$.post('http://api.marifatussalaam.org/admin/quisioner.php', $('#form').serialize(), function(data) {
 	        var obj = JSON.parse(data);
 	        if (!obj.error) {
 	            alert(obj.message);

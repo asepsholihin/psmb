@@ -11,7 +11,7 @@ $response = array();
 
 $sql = "INSERT INTO quis_ortu SET
 nopendaftaran = '".$_POST['nopendaftaran']."',
-petugas = '".$_POST['petugas']."',
+petugas = '".addslashes($_POST['petugas'])."',
 tanggal = NOW(),
 evaluasi = '".$_POST['evaluasi']."',
 q001 = '".$_POST['quis1']."',
@@ -43,7 +43,7 @@ if($_POST['nopendaftaran'] != null) {
     	$response["message"] = 'Berhasil disimpan';
     } else {
         $response["error"] = true;
-    $response["message"] = 'Evaluasi pertama sudah selesai';
+    $response["message"] = 'Salah penulisan nama atau sudah diinputkan!';
     }
 } else {
 	$response["error"] = true;

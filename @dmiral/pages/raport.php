@@ -134,7 +134,7 @@ $(document).ready(function(){
 });
 function edit(idclass){
     $('.loading').show();
-    $.post('../api/admin/nilairaport.php', $('#form'+idclass+'').serialize(), function(data) {
+    $.post('http://localhost/psmb/api/admin/nilairaport.php', $('#form'+idclass+'').serialize(), function(data) {
         var obj = JSON.parse(data);
         if (!obj.error) {
             window.location.href = '?pg=raport';

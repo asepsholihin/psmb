@@ -25,7 +25,7 @@ while($row = mysql_fetch_assoc($query))
 			    <label for=\"radio3".$no."\">3</label>
 
 			    <input type=\"radio\" id=\"radio4".$no."\" name=\"quis".$no."\" value=\"2\">
-			    <label for=\"radio4".$no."\">1</label>
+			    <label for=\"radio4".$no."\">2</label>
 
 			    <input type=\"radio\" id=\"radio5".$no."\" name=\"quis".$no."\" value=\"1\">
 			    <label for=\"radio5".$no."\">1</label>
@@ -111,7 +111,7 @@ $(document).ready(function(){
 
 function searching(e) {
 	console.log(e.value);
-	$.post('../api/admin/searching.php',
+	$.post('http://api.marifatussalaam.org/admin/searching.php',
 	{
 		search : e.value
 	},
@@ -132,11 +132,11 @@ function simpan(){
     $('.loading').html('Loading');
 
     if($('.nopendaftaran').val() != '' ) {
-    	$.post('../api/admin/wawancara.php', $('#form').serialize(), function(data) {
+    	$.post('http://localhost/psmb/api/admin/wawancara.php', $('#form').serialize(), function(data) {
 	        var obj = JSON.parse(data);
 	        if (!obj.error) {
 	            alert(obj.message);
-            	window.location.href = '?pg=quisioner';
+            	window.location.href = '?pg=wawancara';
 	        } else {
 	            alert(obj.message);
 	        }

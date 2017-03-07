@@ -91,7 +91,7 @@ function konfirmasi(id,petugas,type){
     $('.loading').show();
     var r = confirm('Yakin dia udah bayar?');
     if (r == true) {
-        $.post('../api/admin/konfirmasi.php',
+        $.post('http://localhost/psmb/api/admin/konfirmasi.php',
         {
             id:id,
             petugas:petugas,

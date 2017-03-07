@@ -2,7 +2,7 @@
 error_reporting(0);
 $response = array();
 
-$link = mysqli_connect("localhost", "root", "", "psmb");
+$link = mysqli_connect("localhost", "marifatu_dbapsmb", "mtms1zz@t1", "marifatu_psmb");
 
 /* check connection */
 if (mysqli_connect_errno()) {
