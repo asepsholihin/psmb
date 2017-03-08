@@ -117,7 +117,7 @@ function ubahtanggaldirect(idclass) {
 
 function edit(idclass){
     $('.loading').show();
-    $.post('http://localhost/psmb/api/admin/tanggalseleksi.php', $('#form'+idclass+'').serialize(), function(data) {
+    $.post('http://api.marifatussalaam.org/admin/tanggalseleksi.php', $('#form'+idclass+'').serialize(), function(data) {
         var obj = JSON.parse(data);
         if (!obj.error) {
             window.location.href = '?pg=calonsantri';

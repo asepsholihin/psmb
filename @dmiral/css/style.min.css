@@ -331,3 +331,10 @@ a.username:hover {
     border: none;
     background: transparent;
 }
+.wrap-dialog {
+  position: absolute;
+  display: none;
+  width: auto;
+  margin-left: -251px;
+  background: #fff;
+}

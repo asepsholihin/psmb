@@ -7,7 +7,7 @@ FROM calonsiswa a
 LEFT JOIN nilai_tes b ON a.nopendaftaran=b.nopendaftaran
 LEFT JOIN quis_santri c ON a.nopendaftaran=c.nopendaftaran
 LEFT JOIN quis_ortu d ON a.nopendaftaran=d.nopendaftaran
-WHERE is_konfirmasi=1 AND aktif=1
+WHERE is_konfirmasi=1 AND aktif=1 AND kelamin='p' AND lulus!=3
 ";
 $query = mysql_query($sql);
 $no = 1;
@@ -16,10 +16,16 @@ while($row = mysql_fetch_assoc($query))
     $date = date_create($row['ts']);
     $tgllahir = date_create($row['tgllahir']);
 
-    if($row['lulus'] == '3') {
-      $mundur = "<input checked type=\"checkbox\"  name=\"lulus\" data-id=\"3\" value=\"".$row['noid']."\" /><div class=\"Checkbox-visible\"></div>";
+    if($row['lulus'] == '1') {
+      $lulus = "<input checked type=\"checkbox\"  name=\"lulus\" data-id=\"1\" value=\"".$row['noid']."\" /><div class=\"Checkbox-visible\"></div>";
     } else {
-      $mundur = "<input type=\"checkbox\"  name=\"lulus\" data-id=\"3\" value=\"".$row['noid']."\" /><div class=\"Checkbox-visible\"></div>";
+      $lulus = "<input type=\"checkbox\"  name=\"lulus\" data-id=\"1\" value=\"".$row['noid']."\" /><div class=\"Checkbox-visible\"></div>";
+    }
+
+    if($row['lulus'] == '2') {
+      $cadangan = "<input checked type=\"checkbox\"  name=\"lulus\" data-id=\"2\" value=\"".$row['noid']."\" /><div class=\"Checkbox-visible\"></div>";
+    } else {
+      $cadangan = "<input type=\"checkbox\"  name=\"lulus\" data-id=\"2\" value=\"".$row['noid']."\" /><div class=\"Checkbox-visible\"></div>";
     }
 
     $sum = $row['ujian1'] + $row['ujian2'] + $row['ujian3'] + $row['ujian4'] + $row['ujian5'] + $row['ujian6'] + $row['ujian7'] + $row['ujian8'] + $row['ujian9'] + $row['ujian10'] + $row['ujian11'] + $row['ujian12'];
@@ -394,7 +400,12 @@ while($row = mysql_fetch_assoc($query))
         <td>".$no."</td>
         <td>
             <div class=\"Checkbox\">
-              ".$mundur."
+              ".$lulus."
+            </div>
+        </td>
+        <td>
+            <div class=\"Checkbox\">
+              ".$cadangan."
             </div>
         </td>
         <td>".$row['noid']."</td>
@@ -415,7 +426,8 @@ $content = "
 	<thead>
 		<tr>
       <th class=\"no-sort\" width=\"1\">No</th>
-			<th class=\"no-sort\" width=\"1\">Mundur</th>
+			<th class=\"no-sort\" width=\"1\">Lulus</th>
+			<th class=\"no-sort\" width=\"1\">Cadangan</th>
 			<th>No Pendaftaran</th>
 			<th>Nama</th>
 			<th>Raport</th>
@@ -446,7 +458,6 @@ $(document).ready(function(){
         ]
     });
     $('.kelulusan').addClass('active');
-
 });
 
 function dialogquran(val) {
@@ -474,7 +485,6 @@ function removedialogquis(val) {
 }
 
 function lulus(){
-
     $('.loading').show();
     var checkedValues = $('input[name=lulus]:checked').map(function() {
         return this.value;

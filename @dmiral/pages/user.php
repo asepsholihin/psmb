@@ -38,7 +38,7 @@ while($row = mysql_fetch_assoc($query))
         default:
             # code...
             break;
-    }
+    }    
     switch ($row['role_pemberkasan']) {
         case '1':
             $pemberkasan = "checked";
@@ -125,7 +125,7 @@ while($row = mysql_fetch_assoc($query))
             </div>
         </td>
         <td class=\"center\"><a onclick=\"editor('editor".$no."')\" href=\"#\"><img class=\"ic_action\" src=\"css/edit.png\"></a>  <a href=\"\"><img class=\"ic_action\" src=\"css/reset.png\"></a>  <a href=\"\"><img class=\"ic_action\" src=\"css/hapus.png\"></a></td>
-
+        
         <tr class=\"editor editor".$no."\">
         <form id=\"form".$no."\">
         <input type=\"hidden\" name=\"type\" value=\"edit\">
@@ -263,7 +263,7 @@ $(document).ready(function(){
 });
 function edit(idclass){
     $('.loading').show();
-    $.post('http://localhost/psmb/api/admin/user.php', $('#form'+idclass+'').serialize(), function(data) {
+    $.post('http://api.marifatussalaam.org/admin/user.php', $('#form'+idclass+'').serialize(), function(data) {
         var obj = JSON.parse(data);
         if (!obj.error) {
             window.location.href = '?pg=user';
@@ -278,7 +278,7 @@ function editor(idclass){
 }
 function tambah(){
     $('.loading').show();
-    $.post('http://localhost/psmb/api/admin/user.php', $('#form-tambah').serialize(), function(data) {
+    $.post('http://api.marifatussalaam.org/admin/user.php', $('#form-tambah').serialize(), function(data) {
         var obj = JSON.parse(data);
         if (!obj.error) {
             window.location.href = '?pg=user';

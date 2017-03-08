@@ -24,6 +24,12 @@ switch($pg)
 	case "kelulusan":
 		include "pages/kelulusan.php";
 	break;
+	case "kelulusan-ikhwan":
+		include "pages/kelulusan-ikhwan.php";
+	break;
+	case "kelulusan-akhwat":
+		include "pages/kelulusan-akhwat.php";
+	break;
 	case "pemberkasan":
 		include "pages/pemberkasan.php";
 	break;	

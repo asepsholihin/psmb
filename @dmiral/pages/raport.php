@@ -3,7 +3,7 @@ session_start();
 
 include "config.php";
 $data = "";
-$sql = "SELECT nopendaftaran, nama, ujian1, ujian2, ujian3, ujian4, ujian5, ujian6, ujian7, ujian8, ujian9, ujian10, ujian11, ujian12 from calonsiswa";
+$sql = "SELECT nopendaftaran, nama, ujian1, ujian2, ujian3, ujian4, ujian5, ujian6, ujian7, ujian8, ujian9, ujian10, ujian11, ujian12 from calonsiswa where nopendaftaran !='' group by nopendaftaran";
 $query = mysql_query($sql);
 $no = 1;
 while($row = mysql_fetch_assoc($query))
@@ -134,7 +134,7 @@ $(document).ready(function(){
 });
 function edit(idclass){
     $('.loading').show();
-    $.post('http://localhost/psmb/api/admin/nilairaport.php', $('#form'+idclass+'').serialize(), function(data) {
+    $.post('http://api.marifatussalaam.org/admin/nilairaport.php', $('#form'+idclass+'').serialize(), function(data) {
         var obj = JSON.parse(data);
         if (!obj.error) {
             window.location.href = '?pg=raport';

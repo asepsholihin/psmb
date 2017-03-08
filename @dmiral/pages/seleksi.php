@@ -3,7 +3,7 @@ session_start();
 
 include "config.php";
 $data = "";
-$sql = "SELECT a.nopendaftaran as 'id', a.nama, b.* from calonsiswa a LEFT JOIN nilai_tes b ON a.nopendaftaran = b.nopendaftaran WHERE a.nopendaftaran!=''";
+$sql = "SELECT a.nopendaftaran as 'id', a.nama, b.* from calonsiswa a LEFT JOIN nilai_tes b ON a.nopendaftaran = b.nopendaftaran WHERE a.is_konfirmasi=1  and a.nopendaftaran!='' and aktif=1";
 $query = mysql_query($sql);
 $no = 1;
 while($row = mysql_fetch_assoc($query))
@@ -66,13 +66,14 @@ while($row = mysql_fetch_assoc($query))
 
     $jmlquran = $bacaan + $tajwid + $hafalan + $sholat;
 
-    if($jmlquran >= 60 && $jmlquran < 70) {
+    $jmlquran = $bacaan + $tajwid + $hafalan + $sholat;
+    if($jmlquran > 150 && $jmlquran <= 200) {
       $totalquran = "<div style='background:#e6d500;color:#fff;text-align:center;padding:8px;'>".$jmlquran."</div>";
-    } else if($jmlquran >= 70 && $jmlquran < 80) {
+    } else if($jmlquran > 200 && $jmlquran <= 250) {
       $totalquran = "<div style='background:#47b147;color:#fff;text-align:center;padding:8px;'>".$jmlquran."</div>";
-    } else if($jmlquran >= 80 && $jmlquran < 90) {
+    } else if($jmlquran > 250 && $jmlquran <= 300) {
       $totalquran = "<div style='background:#5a91e2;color:#fff;text-align:center;padding:8px;'>".$jmlquran."</div>";
-    } else if($jmlquran >= 90 && $jmlquran <= 100) {
+    } else if($jmlquran > 300) {
       $totalquran = "<div style='background:#9d71e2;color:#fff;text-align:center;padding:8px;'>".$jmlquran."</div>";
     } else {
       $totalquran = "<div style='background:#f13b3b;color:#fff;text-align:center;padding:8px;'>".$jmlquran."</div>";
@@ -83,7 +84,8 @@ while($row = mysql_fetch_assoc($query))
         <form id=\"form".$no."\">
         <input type=\"hidden\" name=\"nopendaftaran\" value=\"".$row['id']."\">
         <input type=\"hidden\" name=\"petugas\" value=\"".$_SESSION['session_name']."\">
-        <td>".$no."</td>
+        <td>".$no."</td>        
+        <td>".$row['id']." </td>
         <td>".ucwords(strtolower($row['nama']))." </td>
         <td class=\"center\">
             <input onclick=\"editor('editor".$no."')\" class=\"number\" name=\"tkd\" maxlength=\"3\" value=\"".$tkd."\" type=\"text\">
@@ -125,6 +127,7 @@ $content = "
     <thead>
         <tr>
             <th rowspan=\"2\" class=\"no-sort\" width=\"1\">No</th>
+            <th rowspan=\"2\" class=\"no-sort\" width=\"1\">No Pendaftaran</th>
             <th rowspan=\"2\">Nama</th>
             <th rowspan=\"2\" class=\"center no-sort\">TKD</th>
             <th colspan=\"5\" class=\"center no-sort\">Tes Qur'an</th>
@@ -133,11 +136,11 @@ $content = "
             <th rowspan=\"2\" class=\"no-sort\">Tanggal</th>
         </tr>
         <tr>
-            <th class=\"center no-sort\">Bacaan</th>
-            <th class=\"center no-sort\">Tajwid</th>
-            <th class=\"center no-sort\">Hafalan</th>
-            <th class=\"center no-sort\">Sholat</th>
-            <th class=\"center no-sort\">Total</th>
+            <th>Bacaan</th>
+            <th>Tajwid</th>
+            <th>Hafalan</th>
+            <th>Sholat</th>
+            <th>Total</th>
         </tr>
     </thead>
     <tbody>
@@ -164,7 +167,7 @@ $(document).ready(function(){
 });
 function edit(idclass){
     $('.loading').show();
-    $.post('http://localhost/psmb/api/admin/nilaiseleksi.php', $('#form'+idclass+'').serialize(), function(data) {
+    $.post('http://api.marifatussalaam.org/admin/nilaiseleksi.php', $('#form'+idclass+'').serialize(), function(data) {
         var obj = JSON.parse(data);
         if (!obj.error) {
             window.location.href = '?pg=seleksi';
