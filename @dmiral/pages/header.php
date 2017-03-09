@@ -21,9 +21,10 @@ switch ($row['role_kelulusan']) {
         $kelulusan = "<li><a class=\"kelulusan\" href=\"javascript:void(0)\">Kelulusan</a>
            <ul>
              <li><a href=\"?pg=kelulusan\">Tahap Awal</a></li>
-	     <li><a href=\"?pg=kelulusan-ikhwan\">Proses Ikhwan</a></li>
-	     <li><a href=\"?pg=kelulusan-akhwat\">Proses Akhwat</a></li>
-	   </ul>
+      	     <li><a href=\"?pg=kelulusan-ikhwan\">Proses Ikhwan</a></li>
+      	     <li><a href=\"?pg=kelulusan-akhwat\">Proses Akhwat</a></li>
+      	     <li><a href=\"?pg=daftar-lulus\">Daftar Lulus</a></li>
+      	   </ul>
         </li>";
         break;
     case '0':

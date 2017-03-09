@@ -7,7 +7,7 @@ FROM calonsiswa a
 LEFT JOIN nilai_tes b ON a.nopendaftaran=b.nopendaftaran
 LEFT JOIN quis_santri c ON a.nopendaftaran=c.nopendaftaran
 LEFT JOIN quis_ortu d ON a.nopendaftaran=d.nopendaftaran
-WHERE is_konfirmasi=1 AND aktif=1 AND kelamin='l' AND lulus!=3
+WHERE is_konfirmasi=1 AND aktif=1 AND lulus!=3 AND lulus!=0 ORDER BY lulus ASC
 ";
 $query = mysql_query($sql);
 $no = 1;
@@ -17,15 +17,9 @@ while($row = mysql_fetch_assoc($query))
     $tgllahir = date_create($row['tgllahir']);
 
     if($row['lulus'] == '1') {
-      $lulus = "<input checked type=\"checkbox\"  name=\"lulus\" data-id=\"1\" value=\"".$row['noid']."\" /><div class=\"Checkbox-visible\"></div>";
+      $lulus = "Lulus";
     } else {
-      $lulus = "<input type=\"checkbox\"  name=\"lulus\" data-id=\"1\" value=\"".$row['noid']."\" /><div class=\"Checkbox-visible\"></div>";
-    }
-
-    if($row['lulus'] == '2') {
-      $cadangan = "<input checked type=\"checkbox\"  name=\"lulus\" data-id=\"2\" value=\"".$row['noid']."\" /><div class=\"Checkbox-visible\"></div>";
-    } else {
-      $cadangan = "<input type=\"checkbox\"  name=\"lulus\" data-id=\"2\" value=\"".$row['noid']."\" /><div class=\"Checkbox-visible\"></div>";
+      $lulus = "Cadangan";
     }
 
     $sum = $row['ujian1'] + $row['ujian2'] + $row['ujian3'] + $row['ujian4'] + $row['ujian5'] + $row['ujian6'] + $row['ujian7'] + $row['ujian8'] + $row['ujian9'] + $row['ujian10'] + $row['ujian11'] + $row['ujian12'];
@@ -398,16 +392,7 @@ while($row = mysql_fetch_assoc($query))
     $data.="
     <tr>
         <td>".$no."</td>
-        <td>
-            <div class=\"Checkbox\">
-              ".$lulus."
-            </div>
-        </td>
-        <td>
-            <div class=\"Checkbox\">
-              ".$cadangan."
-            </div>
-        </td>
+        <td>".$lulus."</td>
         <td>".$row['noid']."<br>".ucwords(strtolower($row['nama']))."<br><strong>".$row['asalsekolah']."</strong></td>
         <td>".$average."</td>
         <td>".$totaltkd."</td>
@@ -425,8 +410,7 @@ $content = "
 	<thead>
 		<tr>
       <th class=\"no-sort\" width=\"1\">No</th>
-			<th class=\"no-sort\" width=\"1\">Lulus</th>
-			<th class=\"no-sort\" width=\"1\">Cadangan</th>
+      <th class=\"center\" width=\"1\">Status</th>
 			<th>Nama</th>
       <th class=\"center\" width=\"1\">Raport</th>
 			<th class=\"center\" width=\"1\">TKD</th>
@@ -439,9 +423,6 @@ $content = "
 		$data
 	</tbody>
 </table>
-<button class=\"button\" onclick=\"lulus()\">Simpan</button>
-
-<div class=\"loading\">Loading</div>
 
 <script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js\"></script>
 <script type=\"text/javascript\" charset=\"utf8\" src=\"//cdn.datatables.net/1.10.12/js/jquery.dataTables.js\"></script>
@@ -482,31 +463,6 @@ function removedialogquis(val) {
   $('.'+val+'').hide();
 }
 
-function lulus(){
-    $('.loading').show();
-    var checkedValues = $('input[name=lulus]:checked').map(function() {
-        return this.value;
-    }).get();
-    var checkedData = $('input[name=lulus]:checked').map(function() {
-        return $(this).data('id');
-    }).get();
-    var r = confirm('Yakin mereka lulus?');
-    if (r == true) {
-        $.post('http://api.marifatussalaam.org/admin/lulus.php',
-        {
-            id: checkedValues,
-            data: checkedData
-        },
-        function(data){
-          var obj = JSON.parse(data);
-          if (!obj.error) {
-              window.location.href = '?pg=kelulusan';
-          } else {
-              alert('Ada yang salah!');
-          }
-        });
-    }
-}
 </script>
 ";
 

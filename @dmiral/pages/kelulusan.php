@@ -397,8 +397,7 @@ while($row = mysql_fetch_assoc($query))
               ".$mundur."
             </div>
         </td>
-        <td>".$row['noid']."</td>
-        <td>".ucwords(strtolower($row['nama']))."<br><strong>".$row['asalsekolah']."</strong></td>
+        <td>".$row['noid']."<br>".ucwords(strtolower($row['nama']))."<br><strong>".$row['asalsekolah']."</strong></td>
         <td>".$average."</td>
         <td>".$totaltkd."</td>
         <td>".$totalquran."</td>
@@ -416,13 +415,12 @@ $content = "
 		<tr>
       <th class=\"no-sort\" width=\"1\">No</th>
 			<th class=\"no-sort\" width=\"1\">Mundur</th>
-			<th>No Pendaftaran</th>
 			<th>Nama</th>
-			<th>Raport</th>
-			<th>TKD</th>
-			<th>QUR'AN</th>
-			<th>WAWANCARA</th>
-			<th>QUISIONER</th>
+			<th class=\"center\" width=\"1\">Raport</th>
+			<th class=\"center\" width=\"1\">TKD</th>
+			<th class=\"center\" width=\"1\">QUR'AN</th>
+			<th class=\"center\" width=\"1\">WAWANCARA</th>
+			<th class=\"center\" width=\"1\">QUISIONER</th>
 		</tr>
 	</thead>
 	<tbody>
