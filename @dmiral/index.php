@@ -30,8 +30,11 @@ switch($pg)
 	case "kelulusan-akhwat":
 		include "pages/kelulusan-akhwat.php";
 	break;
-	case "daftar-lulus":
-		include "pages/daftar-lulus.php";
+	case "daftar-lulus-ikhwan":
+		include "pages/daftar-lulus-ikhwan.php";
+	break;
+	case "daftar-lulus-akhwat":
+		include "pages/daftar-lulus-akhwat.php";
 	break;
 	case "pemberkasan":
 		include "pages/pemberkasan.php";

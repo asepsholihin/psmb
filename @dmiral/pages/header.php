@@ -23,7 +23,8 @@ switch ($row['role_kelulusan']) {
              <li><a href=\"?pg=kelulusan\">Tahap Awal</a></li>
       	     <li><a href=\"?pg=kelulusan-ikhwan\">Proses Ikhwan</a></li>
       	     <li><a href=\"?pg=kelulusan-akhwat\">Proses Akhwat</a></li>
-      	     <li><a href=\"?pg=daftar-lulus\">Daftar Lulus</a></li>
+      	     <li><a href=\"?pg=daftar-lulus-ikhwan\">Daftar Lulus Ikhwan</a></li>
+      	     <li><a href=\"?pg=daftar-lulus-akhwat\">Daftar Lulus Akhwat</a></li>
       	   </ul>
         </li>";
         break;

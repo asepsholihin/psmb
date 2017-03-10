@@ -7,9 +7,12 @@ FROM calonsiswa a
 LEFT JOIN nilai_tes b ON a.nopendaftaran=b.nopendaftaran
 LEFT JOIN quis_santri c ON a.nopendaftaran=c.nopendaftaran
 LEFT JOIN quis_ortu d ON a.nopendaftaran=d.nopendaftaran
-WHERE is_konfirmasi=1 AND aktif=1 AND lulus!=3 AND lulus!=0 ORDER BY lulus ASC
+WHERE is_konfirmasi=1 AND aktif=1 AND kelamin='l' AND lulus!=3 AND lulus!=0 ORDER BY lulus ASC
 ";
 $query = mysql_query($sql);
+
+$status = mysql_fetch_assoc(mysql_query("SELECT (SELECT count(replid) FROM `calonsiswa` WHERE lulus=1 AND kelamin='l') AS lulus, (SELECT count(replid) FROM `calonsiswa` WHERE lulus=2 AND kelamin='l') AS cadangan"));
+
 $no = 1;
 while($row = mysql_fetch_assoc($query))
 {
@@ -23,7 +26,7 @@ while($row = mysql_fetch_assoc($query))
     }
 
     $sum = $row['ujian1'] + $row['ujian2'] + $row['ujian3'] + $row['ujian4'] + $row['ujian5'] + $row['ujian6'] + $row['ujian7'] + $row['ujian8'] + $row['ujian9'] + $row['ujian10'] + $row['ujian11'] + $row['ujian12'];
-    $avg = number_format($sum / 12, 2,",",".");
+    $avg = number_format($sum / 12, 0,",",".");
 
     if($avg >= 60 && $avg < 70) {
       $average = "<div style='background:#e6d500;color:#fff;text-align:center;padding:8px;'>".$avg."</div>";
@@ -59,6 +62,21 @@ while($row = mysql_fetch_assoc($query))
       $totaltkd = "<div style='background:#f13b3b;color:#fff;text-align:center;padding:8px;'>".$jmltkd."</div>";
     }
 
+    $raporttkd = $avg + $jmltkd;
+    $totalraporttkd    = number_format($raporttkd / 2, 0,",",".");
+
+    if($totalraporttkd >= 60 && $totalraporttkd < 70) {
+      $avgtkd = "<div style='background:#e6d500;color:#fff;text-align:center;padding:8px;'>".$totalraporttkd."</div>";
+    } else if($totalraporttkd >= 70 && $totalraporttkd < 80) {
+      $avgtkd = "<div style='background:#47b147;color:#fff;text-align:center;padding:8px;'>".$totalraporttkd."</div>";
+    } else if($totalraporttkd >= 80 && $totalraporttkd < 90) {
+      $avgtkd = "<div style='background:#5a91e2;color:#fff;text-align:center;padding:8px;'>".$totalraporttkd."</div>";
+    } else if($totalraporttkd >= 90 && $totalraporttkd <= 100) {
+      $avgtkd = "<div style='background:#9d71e2;color:#fff;text-align:center;padding:8px;'>".$totalraporttkd."</div>";
+    } else {
+      $avgtkd = "<div style='background:#f13b3b;color:#fff;text-align:center;padding:8px;'>".$totalraporttkd."</div>";
+    }
+
     switch ($row['bacaan']) {
         case '':
             $bacaan = '0';
@@ -92,8 +110,8 @@ while($row = mysql_fetch_assoc($query))
             break;
     }
 
-    $jmlquran = $bacaan + $tajwid + $hafalan + $sholat;
-    if($jmlquran > 150 && $jmlquran <= 200) {
+    $jmlquran = $bacaan + $hafalan;
+    if($jmlquran > 10 && $jmlquran <= 100) {
       $totalquran = "
       <div onmouseover=\"dialogquran('dialogquran".$no."')\" onmouseout=\"removedialogquran('dialogquran".$no."')\" style='background:#e6d500;color:#fff;text-align:center;padding:8px;'>".$jmlquran."</div>
       <div class=\"wrap-dialog dialogquran".$no."\">
@@ -114,12 +132,12 @@ while($row = mysql_fetch_assoc($query))
           <td colspan=\"4\">Catatan</td>
         </tr>
         <tr>
-          <td colspan=\"4\"><textarea rows=\"10\" cols=\"35\">".$row['catatan']."</textarea></td>
+          <td colspan=\"4\"><textarea rows=\"10\" cols=\"35\">".$row['catatanquran']."</textarea></td>
         </tr>
       </table>
       </div>
       ";
-    } else if($jmlquran > 200 && $jmlquran <= 250) {
+    } else if($jmlquran > 100 && $jmlquran <= 130) {
       $totalquran = "
       <div onmouseover=\"dialogquran('dialogquran".$no."')\" onmouseout=\"removedialogquran('dialogquran".$no."')\" style='background:#47b147;color:#fff;text-align:center;padding:8px;'>".$jmlquran."</div>
       <div class=\"wrap-dialog dialogquran".$no."\">
@@ -140,12 +158,12 @@ while($row = mysql_fetch_assoc($query))
           <td colspan=\"4\">Catatan</td>
         </tr>
         <tr>
-          <td colspan=\"4\"><textarea rows=\"10\" cols=\"35\">".$row['catatan']."</textarea></td>
+          <td colspan=\"4\"><textarea rows=\"10\" cols=\"35\">".$row['catatanquran']."</textarea></td>
         </tr>
       </table>
       </div>
       ";
-    } else if($jmlquran > 250 && $jmlquran <= 300) {
+    } else if($jmlquran > 130 && $jmlquran <= 160) {
       $totalquran = "
       <div onmouseover=\"dialogquran('dialogquran".$no."')\" onmouseout=\"removedialogquran('dialogquran".$no."')\" style='background:#5a91e2;color:#fff;text-align:center;padding:8px;'>".$jmlquran."</div>
       <div class=\"wrap-dialog dialogquran".$no."\">
@@ -166,12 +184,12 @@ while($row = mysql_fetch_assoc($query))
           <td colspan=\"4\">Catatan</td>
         </tr>
         <tr>
-          <td colspan=\"4\"><textarea rows=\"10\" cols=\"35\">".$row['catatan']."</textarea></td>
+          <td colspan=\"4\"><textarea rows=\"10\" cols=\"35\">".$row['catatanquran']."</textarea></td>
         </tr>
       </table>
       </div>
       ";
-    } else if($jmlquran > 300) {
+    } else if($jmlquran > 160) {
       $totalquran = "
       <div onmouseover=\"dialogquran('dialogquran".$no."')\" onmouseout=\"removedialogquran('dialogquran".$no."')\" style='background:#9d71e2;color:#fff;text-align:center;padding:8px;'>".$jmlquran."</div>
       <div class=\"wrap-dialog dialogquran".$no."\">
@@ -192,7 +210,7 @@ while($row = mysql_fetch_assoc($query))
           <td colspan=\"4\">Catatan</td>
         </tr>
         <tr>
-          <td colspan=\"4\"><textarea rows=\"10\" cols=\"35\">".$row['catatan']."</textarea></td>
+          <td colspan=\"4\"><textarea rows=\"10\" cols=\"35\">".$row['catatanquran']."</textarea></td>
         </tr>
       </table>
       </div>
@@ -218,7 +236,7 @@ while($row = mysql_fetch_assoc($query))
           <td colspan=\"4\">Catatan</td>
         </tr>
         <tr>
-          <td colspan=\"4\"><textarea rows=\"10\" cols=\"35\">".$row['catatan']."</textarea></td>
+          <td colspan=\"4\"><textarea rows=\"10\" cols=\"35\">".$row['catatanquran']."</textarea></td>
         </tr>
       </table>
       </div>
@@ -389,6 +407,33 @@ while($row = mysql_fetch_assoc($query))
       ";
     }
 
+    $wwcquis      = $nilaiquis + $nilaiwwc;
+    $totalwwcquis = number_format($wwcquis / 2, 0,",",".");
+
+    if($totalwwcquis >= 60 && $totalwwcquis < 70) {
+      $avgwwcquis = "<div style='background:#e6d500;color:#fff;text-align:center;padding:8px;'>".$totalwwcquis."</div>";
+    } else if($totalwwcquis >= 70 && $totalwwcquis < 80) {
+      $avgwwcquis = "<div style='background:#47b147;color:#fff;text-align:center;padding:8px;'>".$totalwwcquis."</div>";
+    } else if($totalwwcquis >= 80 && $totalwwcquis < 90) {
+      $avgwwcquis = "<div style='background:#5a91e2;color:#fff;text-align:center;padding:8px;'>".$totalwwcquis."</div>";
+    } else if($totalwwcquis >= 90 && $totalwwcquis <= 100) {
+      $avgwwcquis = "<div style='background:#9d71e2;color:#fff;text-align:center;padding:8px;'>".$totalwwcquis."</div>";
+    } else {
+      $avgwwcquis = "<div style='background:#f13b3b;color:#fff;text-align:center;padding:8px;'>".$totalwwcquis."</div>";
+    }
+
+    $score = ($totalwwcquis*35/100) + ($jmlquran*40/100) + ($totalraporttkd*25/100);
+
+    if($score <= 75) {
+      $totalscore = "<div style='background:#e6d500;color:#fff;text-align:center;padding:8px;'>".$score."</div>";
+    } else if($score > 75 && $score <= 93) {
+      $totalscore = "<div style='background:#47b147;color:#fff;text-align:center;padding:8px;'>".$score."</div>";
+    } else if($score > 93 && $score <= 111) {
+      $totalscore = "<div style='background:#5a91e2;color:#fff;text-align:center;padding:8px;'>".$score."</div>";
+    } else if($score > 111) {
+      $totalscore = "<div style='background:#9d71e2;color:#fff;text-align:center;padding:8px;'>".$score."</div>";
+    }
+
     $data.="
     <tr>
         <td>".$no."</td>
@@ -396,9 +441,12 @@ while($row = mysql_fetch_assoc($query))
         <td>".$row['noid']."<br>".ucwords(strtolower($row['nama']))."<br><strong>".$row['asalsekolah']."</strong></td>
         <td>".$average."</td>
         <td>".$totaltkd."</td>
+        <td>".$avgtkd."</td>
         <td>".$totalquran."</td>
         <td>".$totalnilaiwwc."</td>
         <td>".$totalnilaiquis."</td>
+        <td>".$avgwwcquis."</td>
+        <td>".$totalscore."</td>
     </tr>
     ";
     $no++;
@@ -406,23 +454,32 @@ while($row = mysql_fetch_assoc($query))
 
 $content = "
 <link rel=\"stylesheet\" type=\"text/css\" href=\"//cdn.datatables.net/1.10.12/css/jquery.dataTables.css\">
+
+<h3 class=\"center\">LULUS : ".$status['lulus']." | CADANGAN : ".$status['cadangan']." | <a target=\"_blank\" href=\"pages/exportlulusexcel.php?lulus=l\">Cetak Lulus</a> | <a target=\"_blank\" href=\"pages/exportcadanganexcel.php?lulus=l\">Cetak Cadangan</a></h3>
+
 <table id=\"table_id\" class=\"display\">
 	<thead>
 		<tr>
       <th class=\"no-sort\" width=\"1\">No</th>
-      <th class=\"center\" width=\"1\">Status</th>
+			<th class=\"no-sort\" width=\"1\">Status</th>
 			<th>Nama</th>
-      <th class=\"center\" width=\"1\">Raport</th>
+      <th class=\"center\" width=\"1\">RAPORT</th>
 			<th class=\"center\" width=\"1\">TKD</th>
+			<th class=\"center\" width=\"1\">AVG TKD</th>
 			<th class=\"center\" width=\"1\">QUR'AN</th>
 			<th class=\"center\" width=\"1\">WAWANCARA</th>
 			<th class=\"center\" width=\"1\">QUISIONER</th>
+			<th class=\"center\" width=\"1\">AVG WAWANCARA</th>
+			<th class=\"center\" width=\"1\">SCORE</th>
 		</tr>
 	</thead>
 	<tbody>
 		$data
 	</tbody>
 </table>
+<button class=\"button\" onclick=\"lulus()\">Simpan</button>
+
+<div class=\"loading\">Loading</div>
 
 <script src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js\"></script>
 <script type=\"text/javascript\" charset=\"utf8\" src=\"//cdn.datatables.net/1.10.12/js/jquery.dataTables.js\"></script>
@@ -463,6 +520,31 @@ function removedialogquis(val) {
   $('.'+val+'').hide();
 }
 
+function lulus(){
+    $('.loading').show();
+    var checkedValues = $('input[name=lulus]:checked').map(function() {
+        return this.value;
+    }).get();
+    var checkedData = $('input[name=lulus]:checked').map(function() {
+        return $(this).data('id');
+    }).get();
+    var r = confirm('Yakin mereka lulus?');
+    if (r == true) {
+        $.post('http://api.marifatussalaam.org/admin/lulus.php',
+        {
+            id: checkedValues,
+            data: checkedData
+        },
+        function(data){
+          var obj = JSON.parse(data);
+          if (!obj.error) {
+              window.location.href = '?pg=kelulusan';
+          } else {
+              alert('Ada yang salah!');
+          }
+        });
+    }
+}
 </script>
 ";
 

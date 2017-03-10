@@ -2,16 +2,16 @@
 include "config.php";
 $data = "";
 $sql = "
-SELECT a.nopendaftaran AS noid,a.nama,a.asalsekolah,a.lulus, b.tkd, b.bacaan, b.tajwid, b.hafalan, b.sholat, b.catatan as catatanquran, c.*, d.*, a.ujian1, a.ujian2, a.ujian3, a.ujian4, a.ujian5, a.ujian6, a.ujian7, a.ujian8, a.ujian9, a.ujian10, a.ujian11, a.ujian12, c.catatan as catatansantri, d.q019 as catatanortu1, d.q020 as catatanortu2
+SELECT a.nopendaftaran AS noid,a.nama,a.asalsekolah,a.lulus, b.tkd, b.bacaan, b.tajwid, b.hafalan, b.sholat, b.catatan, c.*, d.*, a.ujian1, a.ujian2, a.ujian3, a.ujian4, a.ujian5, a.ujian6, a.ujian7, a.ujian8, a.ujian9, a.ujian10, a.ujian11, a.ujian12, c.catatan as catatansantri, d.q019 as catatanortu1, d.q020 as catatanortu2
 FROM calonsiswa a
 LEFT JOIN nilai_tes b ON a.nopendaftaran=b.nopendaftaran
 LEFT JOIN quis_santri c ON a.nopendaftaran=c.nopendaftaran
 LEFT JOIN quis_ortu d ON a.nopendaftaran=d.nopendaftaran
-WHERE is_konfirmasi=1 AND aktif=1 AND kelamin='l' AND lulus!=3
+WHERE is_konfirmasi=1 AND aktif=1 AND kelamin='p' AND lulus!=3 AND lulus!=0 ORDER BY lulus ASC
 ";
 $query = mysql_query($sql);
 
-$status = mysql_fetch_assoc(mysql_query("SELECT (SELECT count(replid) FROM `calonsiswa` WHERE lulus=1 AND kelamin='l') AS lulus, (SELECT count(replid) FROM `calonsiswa` WHERE lulus=2 AND kelamin='l') AS cadangan"));
+$status = mysql_fetch_assoc(mysql_query("SELECT (SELECT count(replid) FROM `calonsiswa` WHERE lulus=1 AND kelamin='p') AS lulus, (SELECT count(replid) FROM `calonsiswa` WHERE lulus=2 AND kelamin='p') AS cadangan"));
 
 $no = 1;
 while($row = mysql_fetch_assoc($query))
@@ -20,15 +20,9 @@ while($row = mysql_fetch_assoc($query))
     $tgllahir = date_create($row['tgllahir']);
 
     if($row['lulus'] == '1') {
-      $lulus = "<input checked type=\"checkbox\"  name=\"lulus\" data-id=\"1\" value=\"".$row['noid']."\" /><div class=\"Checkbox-visible\"></div>";
+      $lulus = "Lulus";
     } else {
-      $lulus = "<input type=\"checkbox\"  name=\"lulus\" data-id=\"1\" value=\"".$row['noid']."\" /><div class=\"Checkbox-visible\"></div>";
-    }
-
-    if($row['lulus'] == '2') {
-      $cadangan = "<input checked type=\"checkbox\"  name=\"lulus\" data-id=\"2\" value=\"".$row['noid']."\" /><div class=\"Checkbox-visible\"></div>";
-    } else {
-      $cadangan = "<input type=\"checkbox\"  name=\"lulus\" data-id=\"2\" value=\"".$row['noid']."\" /><div class=\"Checkbox-visible\"></div>";
+      $lulus = "Cadangan";
     }
 
     $sum = $row['ujian1'] + $row['ujian2'] + $row['ujian3'] + $row['ujian4'] + $row['ujian5'] + $row['ujian6'] + $row['ujian7'] + $row['ujian8'] + $row['ujian9'] + $row['ujian10'] + $row['ujian11'] + $row['ujian12'];
@@ -443,16 +437,7 @@ while($row = mysql_fetch_assoc($query))
     $data.="
     <tr>
         <td>".$no."</td>
-        <td>
-            <div class=\"Checkbox\">
-              ".$lulus."
-            </div>
-        </td>
-        <td>
-            <div class=\"Checkbox\">
-              ".$cadangan."
-            </div>
-        </td>
+        <td>".$lulus."</td>
         <td>".$row['noid']."<br>".ucwords(strtolower($row['nama']))."<br><strong>".$row['asalsekolah']."</strong></td>
         <td>".$average."</td>
         <td>".$totaltkd."</td>
@@ -470,14 +455,13 @@ while($row = mysql_fetch_assoc($query))
 $content = "
 <link rel=\"stylesheet\" type=\"text/css\" href=\"//cdn.datatables.net/1.10.12/css/jquery.dataTables.css\">
 
-<h3 class=\"center\">LULUS : ".$status['lulus']." | CADANGAN : ".$status['cadangan']."</h3>
+<h3 class=\"center\">LULUS : ".$status['lulus']." | CADANGAN : ".$status['cadangan']." | <a target=\"_blank\" href=\"pages/exportlulusexcel.php?lulus=p\">Cetak Lulus</a> | <a target=\"_blank\" href=\"pages/exportcadanganexcel.php?lulus=p\">Cetak Cadangan</a></h3>
 
 <table id=\"table_id\" class=\"display\">
 	<thead>
 		<tr>
       <th class=\"no-sort\" width=\"1\">No</th>
-			<th class=\"no-sort\" width=\"1\">Lulus</th>
-			<th class=\"no-sort\" width=\"1\">Cadangan</th>
+			<th class=\"no-sort\" width=\"1\">Status</th>
 			<th>Nama</th>
       <th class=\"center\" width=\"1\">RAPORT</th>
 			<th class=\"center\" width=\"1\">TKD</th>
@@ -554,7 +538,7 @@ function lulus(){
         function(data){
           var obj = JSON.parse(data);
           if (!obj.error) {
-              window.location.href = '?pg=kelulusan-ikhwan';
+              window.location.href = '?pg=kelulusan';
           } else {
               alert('Ada yang salah!');
           }
