@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="keuangan">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+        <meta name="description" content="Keuangan Ma'rifatussalaam">
+        <meta name="author" content="Asep Sholihin">
+        <meta name="keywords" content="ma'rifatussalaam, Pendaftaran Online, boarding school, smp al-qur'an, smp, ma-had, tahfizh, pesantren">
+        <link rel="icon" href="ic_logo.png">
+        <title ng-bind="title">Keuangan Ma'rifatussalaam</title>
+        <!-- CSS  -->
+        <!--<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">-->
+        <link rel="stylesheet" href="bootstrap.min.css">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body ng-controller="Siswa">
+        <div id="top" class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="ic_logo.png" alt="Logo PSMB" width="90">
+                    <h3><strong>Keuangan</strong> Marifatussalaam</h3>
+                </div>
+            </div>
+            <div class="stepwizard">
+                <div class="stepwizard-row setup-panel">
+                    <div class="stepwizard-step">
+                        <a href="data.php" target="_blank" type="button" class="btn btn-primary">Lihat Data</a>
+                    </div>
+                </div>
+            </div>
+
+            <form id="form">
+            	<input type="hidden" name="registrasi" value="website"/>
+                <div class="row setup-content" id="step-1">
+                    <div class="col-xs-9">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label">Tanggal bayar</label>
+                                    <input require type="date" name="tanggal_transaksi" class="form-control" placeholder="Tanggal Transaksi"  />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label">Diterima dari</label>
+                                    <input require type="hidden" name="nopendaftaran" ng-model="nopendaftaran" class="form-control" placeholder="Nama Lengkap"  />
+                                    <input require type="text" name="nama" ng-model="nama" class="form-control" placeholder="Nama Lengkap"  />
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Pengembangan Sarana & Prasarana</label>
+                                    <input type="text" name="psp" required class="form-control rupiah" onkeypress="return isNumberKey(event)" placeholder="0" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Pengembangan SDM</label>
+                                    <input type="text" name="psdm" required class="form-control rupiah" onkeypress="return isNumberKey(event)" placeholder="0" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Kegiatan Tahunan</label>
+                                    <input type="text" name="kgttahunan" required class="form-control rupiah" onkeypress="return isNumberKey(event)" placeholder="0" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Seragam</label>
+                                    <input type="text" name="seragam" class="form-control rupiah" onkeypress="return isNumberKey(event)" placeholder="0" />
+                                </div>
+                            </div>
+                            <!-- Batas -->
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Buku Paket & Modul</label>
+                                    <input type="text" name="buku" class="form-control rupiah" onkeypress="return isNumberKey(event)" placeholder="0" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Pekan Ta'aruf (Orientasi)</label>
+                                    <input type="text" name="orientasi" class="form-control rupiah" onkeypress="return isNumberKey(event)" placeholder="0" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Komitmen Bulanan</label>
+                                    <input type="text" name="komitmenbulanan" class="form-control rupiah" onkeypress="return isNumberKey(event)" placeholder="0" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Komitmen Tahunan</label>
+                                    <input type="text" name="komitmentahunan" class="form-control rupiah" onkeypress="return isNumberKey(event)" placeholder="0" />
+                                </div>
+                            </div>
+                            <!-- Batas -->
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label class="control-label">Uang Saku</label>
+                                    <input type="text" name="uangsaku" class="form-control rupiah" onkeypress="return isNumberKey(event)" placeholder="0" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Kas Komite</label>
+                                    <input type="text" name="kaskomite" class="form-control rupiah" onkeypress="return isNumberKey(event)" placeholder="0" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Infaq</label>
+                                    <input type="text" name="infaq" class="form-control rupiah" onkeypress="return isNumberKey(event)" placeholder="0" />
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label">Qurban</label>
+                                    <input type="text" name="qurban" class="form-control rupiah" onkeypress="return isNumberKey(event)" placeholder="0" />
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group">
+                                <label class="control-label">Iuran Bulanan/SPP</label>
+                                <div class="row">
+                                  <div class="col-xs-4">
+                                      <input type="text" name="keterangan" class="form-control" placeholder="Bulan" />
+                                  </div>
+                                    <div class="col-xs-4">
+                                        <input type="text" name="keteranganthn" class="form-control" placeholder="Tahun" />
+                                    </div>
+                                  <div class="col-xs-4">
+                                      <input type="text" name="spp" class="form-control rupiah" onkeypress="return isNumberKey(event)" placeholder="0" />
+                                  </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="control-label">Lain-lain</label>
+                                    <textarea class="form-control" name="catatan" required="" rows="5"></textarea>
+                                    <input type="text" name="lain" class="form-control rupiah" onkeypress="return isNumberKey(event)" placeholder="0" />
+                                </div>
+
+                                <div class="alert alert-danger alert-dismissible" role="alert" hidden />Ada yang salah. Jangan lupa isi namanya woy!</div>
+                                <div class="alert alert-success success alert-dismissible" role="alert" hidden /></div>
+                                <div class="alert alert-info alert-dismissible" role="alert" hidden />Loading...</div>
+                            </div>
+                            <div class="col-md-11 text-right">
+                                <label class="transfer">
+                                  <input type="checkbox" name="transfer" value="1"> <strong>TRANSFER</strong>
+                                </label>
+                            </div>
+                            <div class="col-md-1">
+                                <button class="btn btn-primary nextBtn btn-md pull-right" type="button" id="simpan">Simpan</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-3 table-siswa" ng-controller="Siswa">
+                      <input type="text" class="form-control" ng-model="cari" placeholder="Cari Nama..." />
+                      <table class="table table-striped table-hover">
+                        <thead>
+                        <tr>
+                          <th>Calon Santri</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                          <tr ng-repeat="vw in siswa | filter:cari" ng-click="pilihSiswa(vw.nopendaftaran,vw.nama)">
+                            <td>{{ vw.nama | ucwords }}</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <script src="jquery.min.js"></script>
+        <script src="angular.min.js"></script>
+        <script>
+
+            var app = angular.module('keuangan',[]);
+
+            app.filter("ucwords", function () {
+              return function (input){
+                if(input) { //when input is defined the apply filter
+                  input = input.toLowerCase().replace(/\b[a-z]/g, function(letter) {
+                    return letter.toUpperCase();
+                  });
+                }
+                return input;
+              }
+            });
+            app.controller('Siswa', function($scope, $http){
+              $http.get('siswa.php').success(function(response) {
+                $scope.siswa = response;
+              });
+
+              $scope.pilihSiswa = function(nopendaftaran,nama) {
+                $('input[name=nopendaftaran]').val(nopendaftaran);
+                $('input[name=nama]').val(nama);
+              }
+
+            });
+
+            $(document).ready(function() {
+                $('#simpan').click(function() {
+                    $('.alert-info').show();
+                    $.post('keuangan.php', $('#form').serialize(), function(data) {
+                        var obj = JSON.parse(data);
+                        if (!obj.error) {
+                            $('.alert-danger').show();
+                            $('.alert-info').hide();
+                        } else {
+                            $('.alert-success').show();
+                            $('.success').html('cetak kwitansi klik <a href="faktur.php?nopendaftaran='+obj.nopendaftaran+'&tanggal='+obj.tanggal+'" target="_blank">disini</a>');
+                            $('.alert-info').hide();
+                            $('#form')[0].reset();
+                        }
+                    });
+                });
+
+                $('input.rupiah').keyup(function(event){
+                    // skip for arrow keys
+                    if(event.which >= 37 && event.which <= 40){
+                    event.preventDefault();
+                    }
+                    var $this = $(this);
+                    var num = $this.val().replace(/,/gi, "").split("").reverse().join("");
+                    var num2 = RemoveRougeChar(num.replace(/(.{3})/g,"$1,").split("").reverse().join(""));
+
+                    console.log(num2);
+                    // the following line has been simplified. Revision history contains original.
+                    $this.val(num2);
+                });
+
+            });
+
+            function isNumberKey(evt){
+                var charCode = (evt.which) ? evt.which : event.keyCode
+                if (charCode > 31 && (charCode < 48 || charCode > 57))
+                return false;
+
+                return true;
+            }
+
+            function RemoveRougeChar(convertString){
+                if(convertString.substring(0,1) == ","){
+                    return convertString.substring(1, convertString.length);
+                }
+                return convertString;
+            }
+        </script>
+    </body>
+</html>

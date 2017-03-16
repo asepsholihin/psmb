@@ -18,8 +18,11 @@ switch($pg)
 	case "calonsantri":
 		include "pages/calonsantri.php";
 	break;
-	case "konfirmasipembayaran":
+	case "konfirmasi-pendaftaran":
 		include "pages/konfirmasipembayaran.php";
+	break;
+	case "input-pengeluaran":
+		include "pages/input-pengeluaran.php";
 	break;
 	case "kelulusan":
 		include "pages/kelulusan.php";

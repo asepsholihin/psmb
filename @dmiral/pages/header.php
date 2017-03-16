@@ -5,9 +5,17 @@ $sql = "SELECT role_pendaftaran,role_kelulusan,role_user,role_pemberkasan,role_w
 $query = mysql_query($sql);
 $row = mysql_fetch_assoc($query);
 
-switch ($row['role_pendaftaran']) {
+switch ($row['role_kelulusan']) {
     case '1':
-        $pendaftaran = "<li><a class=\"konfirmasipembayaran\" href=\"?pg=konfirmasipembayaran\">Konfirmasi Pembayaran</a></li>";
+        $pendaftaran = "<li><a class=\"konfirmasipembayaran\" href=\"javascript:void(0)\">Keuangan</a>
+          <ul>
+            <li><a href=\"?pg=konfirmasi-pendaftaran\">Konfirmasi Pendaftaran</a></li>
+            <li><a href=\"?pg=input-pengeluaran\">Input Pengeluaran</a></li>
+            <li><a href=\"?pg=rekap-pendaftaran-pengeluaran\">Rekapitulasi Pendaftaran dan Pengeluaran</a></li>
+            <li><a target=\"_blank\" href=\"keuangan\">Konfirmasi Daftar Ulang</a></li>
+            <li><a href=\"?pg=rekap-daftarulang\">Rekapitulasi Daftar Ulang</a></li>
+          </ul>
+        </li>";
         break;
     case '0':
         $pendaftaran = '';
@@ -95,7 +103,7 @@ switch ($row['role_wawancara']) {
         # code...
         break;
 }
-switch ($row['role_seleksi']) {
+switch ($row['role_wawancara']) {
     case '1':
         $seleksi = "
         <li><a class=\"seleksi\" href=\"?pg=seleksi\">Seleksi</a></li>";
@@ -107,7 +115,7 @@ switch ($row['role_seleksi']) {
         # code...
         break;
 }
-switch ($row['role_quisioner']) {
+switch ($row['role_wawancara']) {
     case '1':
         $quisioner = "
         <li>
