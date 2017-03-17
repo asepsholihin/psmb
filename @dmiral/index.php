@@ -24,6 +24,9 @@ switch($pg)
 	case "input-pengeluaran":
 		include "pages/input-pengeluaran.php";
 	break;
+	case "rekap-daftarulang":
+		include "pages/rekap-daftarulang.php";
+	break;
 	case "kelulusan":
 		include "pages/kelulusan.php";
 	break;

@@ -43,7 +43,7 @@ if($_POST['buku'] != "") {
 }
 
 if($_POST['orientasi'] != "") {
-    $sql6 = "INSERT INTO log_transaksi VALUES ('".addslashes($_POST['nopendaftaran'])."','".str_replace(',','',$_POST['orientasi'])."','Pekan Ta\'aruf (Orientasi)','','',NOW(),'".$_POST['tanggal_transaksi']."','".$transfer."','Evi Siti Soviani','0')";
+    $sql6 = "INSERT INTO log_transaksi VALUES ('".addslashes($_POST['nopendaftaran'])."','".str_replace(',','',$_POST['orientasi'])."','Orientasi Dan I\'dad','','',NOW(),'".$_POST['tanggal_transaksi']."','".$transfer."','Evi Siti Soviani','0')";
     mysql_query($sql6);
     $response["error"] = "false";
 }
