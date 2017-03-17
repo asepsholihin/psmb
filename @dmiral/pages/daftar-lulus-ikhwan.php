@@ -2,7 +2,7 @@
 include "config.php";
 $data = "";
 $sql = "
-SELECT a.nopendaftaran AS noid,a.nama,a.asalsekolah,a.lulus, b.tkd, b.bacaan, b.tajwid, b.hafalan, b.sholat, b.catatan, c.*, d.*, a.ujian1, a.ujian2, a.ujian3, a.ujian4, a.ujian5, a.ujian6, a.ujian7, a.ujian8, a.ujian9, a.ujian10, a.ujian11, a.ujian12, c.catatan as catatansantri, d.q019 as catatanortu1, d.q020 as catatanortu2
+SELECT a.nopendaftaran AS noid,a.nama,a.asalsekolah,a.lulus, a.hportu, b.tkd, b.bacaan, b.tajwid, b.hafalan, b.sholat, b.catatan, c.*, d.*, a.ujian1, a.ujian2, a.ujian3, a.ujian4, a.ujian5, a.ujian6, a.ujian7, a.ujian8, a.ujian9, a.ujian10, a.ujian11, a.ujian12, c.catatan as catatansantri, d.q019 as catatanortu1, d.q020 as catatanortu2
 FROM calonsiswa a
 LEFT JOIN nilai_tes b ON a.nopendaftaran=b.nopendaftaran
 LEFT JOIN quis_santri c ON a.nopendaftaran=c.nopendaftaran
@@ -439,6 +439,7 @@ while($row = mysql_fetch_assoc($query))
         <td>".$no."</td>
         <td>".$lulus."</td>
         <td>".$row['noid']."<br>".ucwords(strtolower($row['nama']))."<br><strong>".$row['asalsekolah']."</strong></td>
+        <td>".$row['hportu']."</td>
         <td>".$average."</td>
         <td>".$totaltkd."</td>
         <td>".$avgtkd."</td>
@@ -463,6 +464,7 @@ $content = "
       <th class=\"no-sort\" width=\"1\">No</th>
 			<th class=\"no-sort\" width=\"1\">Status</th>
 			<th>Nama</th>
+			<th>HP</th>
       <th class=\"center\" width=\"1\">RAPORT</th>
 			<th class=\"center\" width=\"1\">TKD</th>
 			<th class=\"center\" width=\"1\">AVG TKD</th>
