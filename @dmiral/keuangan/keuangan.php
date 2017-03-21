@@ -104,7 +104,6 @@ if($_POST['lain'] != "") {
 }
 
 date_default_timezone_set('Asia/Jakarta');
-$response["nopendaftaran"] = addslashes($_POST['nopendaftaran']);
-$response["tanggal"] = date('Y-m-d');
+$response["id_referensi"] = addslashes($lastid);
 echo json_encode($response);
 ?>

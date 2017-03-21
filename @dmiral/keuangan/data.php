@@ -2,19 +2,27 @@
 require_once 'db_connect.php';
 $db = new DB_CONNECT();
 
-$sql = "SELECT b.nama, a.nopendaftaran, a.tanggal_transaksi, a.tanggal FROM log_transaksi a JOIN calonsiswa b ON a.nopendaftaran=b.nopendaftaran GROUP BY nopendaftaran,tanggal ORDER BY tanggal DESC";
+$sql = "SELECT b.nama, a.nopendaftaran, a.tanggal_transaksi, a.tanggal, a.id_referensi, a.transfer FROM log_transaksi a JOIN calonsiswa b ON a.nopendaftaran=b.nopendaftaran GROUP BY id_referensi ORDER BY tanggal DESC";
 $query = mysql_query($sql);
 $no = 1;
 while($row = mysql_fetch_array($query)){
-    $data .= "
-    <tr>
-        <td align=\"center\">".$no."</td>
-        <td>".$row['nama']."</td>
-        <td>".$row['tanggal_transaksi']."</td>
-        <td><a href=\"faktur.php?nama=".addslashes($row['nama'])."&tanggal=".$row['tanggal']."/\" target=\"_blank\">Print</td>
-    </tr>
-    ";
-    $no++;
+
+  if($row['transfer'] == 1) {
+    $transaksi = "Transfer";
+  } else {
+    $transaksi = "Tunai";
+  }
+
+  $data .= "
+  <tr>
+      <td align=\"center\">".$no."</td>
+      <td>".$row['nama']."</td>
+      <td>".$row['tanggal_transaksi']."</td>
+      <td>".$transaksi."</td>
+      <td><a href=\"faktur.php?id_referensi=".$row['id_referensi']."\" target=\"_blank\">Print</td>
+  </tr>
+  ";
+  $no++;
 }
 ?>
 <style>
@@ -47,6 +55,7 @@ tr.head {
             <th width="1">No.</th>
             <th>Nama</th>
             <th>Tanggal</th>
+            <th>Transaksi</th>
             <th>Kwitansi</th>
         </tr>
     </thead>

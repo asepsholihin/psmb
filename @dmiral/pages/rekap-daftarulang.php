@@ -62,7 +62,8 @@ SELECT
 (SELECT IFNULL(SUM(jumlah), 0) FROM `log_transaksi` WHERE jenis='Kas Komite') AS kaskomite,
 (SELECT IFNULL(SUM(jumlah), 0) FROM `log_transaksi` WHERE jenis='Infaq') AS infaq,
 (SELECT IFNULL(SUM(jumlah), 0) FROM `log_transaksi` WHERE jenis='Qurban') AS qurban,
-(SELECT IFNULL(SUM(jumlah), 0) FROM `log_transaksi` WHERE jenis='Iuran Bulanan/SPP') AS spp
+(SELECT IFNULL(SUM(jumlah), 0) FROM `log_transaksi` WHERE jenis='Iuran Bulanan/SPP') AS spp,
+(SELECT IFNULL(SUM(jumlah), 0) FROM `log_transaksi`) AS total
 ";
 $querytotal = mysql_query($sqltotal);
 $total = mysql_fetch_array($querytotal);
@@ -144,6 +145,13 @@ $kwitansi
   <div class=\"countbox\">
       <h2>Rp. ".number_format($total['qurban'],0,'.','.')."</h2></a>
       Qurban
+  </div>
+</div>
+
+<div class=\"wrapbox\">
+  <div class=\"countbox\">
+      <h2>Rp. ".number_format($total['total'],0,'.','.')."</h2></a>
+      Grand Total
   </div>
 </div>
 

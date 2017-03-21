@@ -86,7 +86,7 @@ error_reporting(0);
 require_once 'db_connect.php';
 $db = new DB_CONNECT();
 
-$sql = "SELECT * FROM log_transaksi WHERE nopendaftaran='".$_GET['nopendaftaran']."' AND tanggal='".$_GET['tanggal']."'";
+$sql = "SELECT * FROM log_transaksi WHERE id_referensi='".$_GET['id_referensi']."'";
 $query = mysql_query($sql);
 $no = 1;
 while($row = mysql_fetch_array($query)){
@@ -112,7 +112,7 @@ while($row = mysql_fetch_array($query)){
     ";
     $no++;
 }
-$idsql = "SELECT SUM(a.jumlah) as total, a.nopendaftaran, b.nama, a.tanggal, a.transfer FROM log_transaksi a INNER JOIN calonsiswa b ON a.nopendaftaran=b.nopendaftaran WHERE a.nopendaftaran='".$_GET['nopendaftaran']."' AND a.tanggal='".$_GET['tanggal']."'";
+$idsql = "SELECT SUM(a.jumlah) as total, a.nopendaftaran, b.nama, a.tanggal, a.transfer FROM log_transaksi a INNER JOIN calonsiswa b ON a.nopendaftaran=b.nopendaftaran WHERE a.id_referensi='".$_GET['id_referensi']."'";
 $id = mysql_fetch_array(mysql_query($idsql));
 $tanggal = date_format(date_create($id['tanggal']),"d-m-Y");
 
