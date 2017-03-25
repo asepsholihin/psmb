@@ -112,9 +112,9 @@ while($row = mysql_fetch_array($query)){
     ";
     $no++;
 }
-$idsql = "SELECT SUM(a.jumlah) as total, a.nopendaftaran, b.nama, a.tanggal, a.transfer FROM log_transaksi a INNER JOIN calonsiswa b ON a.nopendaftaran=b.nopendaftaran WHERE a.id_referensi='".$_GET['id_referensi']."'";
+$idsql = "SELECT SUM(a.jumlah) as total, a.nopendaftaran, b.nama, a.tanggal_transaksi, a.transfer FROM log_transaksi a INNER JOIN calonsiswa b ON a.nopendaftaran=b.nopendaftaran WHERE a.id_referensi='".$_GET['id_referensi']."'";
 $id = mysql_fetch_array(mysql_query($idsql));
-$tanggal = date_format(date_create($id['tanggal']),"d-m-Y");
+$tanggal = date_format(date_create($id['tanggal_transaksi']),"d-m-Y");
 
 if($id['transfer'] == 1) {
   $transaksi = "Transfer";
