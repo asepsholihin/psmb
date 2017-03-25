@@ -1,7 +1,7 @@
 <?php
 include "config.php";
 $data = "";
-$sql = "SELECT b.id_referensi, a.nopendaftaran, a.nama, b.tanggal_transaksi FROM calonsiswa a LEFT JOIN log_transaksi b ON a.nopendaftaran=b.nopendaftaran WHERE lulus=1 OR lulus=2 GROUP BY a.nopendaftaran, b.tanggal_transaksi, b.transfer ORDER BY nama ASC";
+$sql = "SELECT b.id_referensi, a.nopendaftaran, a.nama, b.tanggal_transaksi, b.id_referensi FROM calonsiswa a LEFT JOIN log_transaksi b ON a.nopendaftaran=b.nopendaftaran WHERE lulus=1 OR lulus=2 GROUP BY a.nopendaftaran, b.tanggal_transaksi, b.transfer ORDER BY nama ASC";
 $query = mysql_query($sql);
 $no = 1;
 while($row = mysql_fetch_assoc($query))
@@ -14,13 +14,15 @@ while($row = mysql_fetch_assoc($query))
     (SELECT jumlah FROM log_transaksi WHERE nopendaftaran='".$row['nopendaftaran']."' AND jenis='Seragam' AND id_referensi='".$row['id_referensi']."' GROUP BY nopendaftaran) AS 'seragam',
     (SELECT jumlah FROM log_transaksi WHERE nopendaftaran='".$row['nopendaftaran']."' AND jenis='Buku Paket & Modul' AND id_referensi='".$row['id_referensi']."' GROUP BY nopendaftaran) AS 'buku',
     (SELECT jumlah FROM log_transaksi WHERE nopendaftaran='".$row['nopendaftaran']."' AND jenis='Orientasi Dan I\'dad' AND id_referensi='".$row['id_referensi']."' GROUP BY nopendaftaran) AS 'orientasi'
-    FROM log_transaksi a JOIN calonsiswa b ON a.nopendaftaran=b.nopendaftaran WHERE a.nopendaftaran='".$row['nopendaftaran']."' GROUP BY a.nopendaftaran
+    FROM log_transaksi a JOIN calonsiswa b ON a.nopendaftaran=b.nopendaftaran WHERE a.nopendaftaran='".$row['nopendaftaran']."' AND a.id_referensi='".$row['id_referensi']."'  GROUP BY a.nopendaftaran
     ";
     $querys = mysql_query($sqls);
     $uang = mysql_fetch_assoc($querys);
 
+    //echo $sqls."<br>";
+
     if($uang['nama'] != '') {
-      if($$uang['transfer'] == 1) {
+      if($uang['transfer'] == 1) {
         $transfer = 'Transfer';
       } else {
         $transfer = "Tunai";
