@@ -4,9 +4,9 @@ session_start();
 include "config.php";
 $data = "";
 $sql = "SELECT nopendaftaran, nama, ujian1, ujian2, ujian3, ujian4, ujian5, ujian6, ujian7, ujian8, ujian9, ujian10, ujian11, ujian12 from calonsiswa where nopendaftaran !='' group by nopendaftaran";
-$query = mysql_query($sql);
+$query = mysqli_query($koneksi, $sql);
 $no = 1;
-while($row = mysql_fetch_assoc($query))
+while($row = mysqli_fetch_assoc($query))
 {
 
     $sum = $row['ujian1'] + $row['ujian2'] + $row['ujian3'] + $row['ujian4'] + $row['ujian5'] + $row['ujian6'] + $row['ujian7'] + $row['ujian8'] + $row['ujian9'] + $row['ujian10'] + $row['ujian11'] + $row['ujian12'];
@@ -153,5 +153,5 @@ function editor(idclass){
 </script>
 ";
 
-mysql_close($koneksi);
+mysqli_close($koneksi);
 ?>

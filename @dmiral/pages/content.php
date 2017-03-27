@@ -15,9 +15,9 @@ $sql = "SELECT
 ( SELECT COUNT(replid) FROM calonsiswa WHERE aktif=1 AND info2='29-01-2017' ) AS jmltgl2,
 ( SELECT COUNT(replid) FROM calonsiswa WHERE aktif=1 AND info2='12-02-2017' ) AS jmltgl3,
 ( SELECT COUNT(replid) FROM calonsiswa WHERE aktif=1 AND info2='26-02-2017' ) AS jmltgl4";
-$query = mysql_query($sql);
+$query = mysqli_query($koneksi, $sql);
 $no = 1;
-$row = mysql_fetch_assoc($query);
+$row = mysqli_fetch_assoc($query);
 $content = "
 <meta http-equiv=\"refresh\" content=\"300\">
 <div class=\"wrapbox\">
@@ -93,5 +93,5 @@ $(document).ready(function(){
 </script>
 ";
 
-mysql_close($koneksi);
+mysqli_close($koneksi);
 ?>

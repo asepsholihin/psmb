@@ -3,8 +3,8 @@ include "../config.php";
 error_reporting(0);
 
 $sql = "SELECT * FROM calonsiswa WHERE hportu='".urlencode($_GET['id'])."'";
-$query = mysql_query($sql);
-$row = mysql_fetch_assoc($query);
+$query = mysqli_query($koneksi, $sql);
+$row = mysqli_fetch_assoc($query);
 if($row['kelamin'] == 'l'){
 	$kelamin = "Laki-laki";
 } else {

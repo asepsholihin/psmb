@@ -22,7 +22,7 @@ body {
     padding-top: 141px;
     text-transform: uppercase;
 }
-.kwitansi-nama {	
+.kwitansi-nama {
     font-size: 1.5em;
     font-weight: bold;
     letter-spacing: 3px;
@@ -34,7 +34,7 @@ body {
 }
 </style>
 
-<?php 
+<?php
 
 $nama = explode (' ',$_GET['nama']);
 $nama = $nama[0]." ".$nama[1]." ".mb_strimwidth($nama[2],0,2,'.')." ".mb_strimwidth($nama[3],0,2,'.');

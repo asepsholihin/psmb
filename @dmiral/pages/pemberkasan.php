@@ -2,9 +2,9 @@
 include "config.php";
 $data = "";
 $sql = "SELECT a.nopendaftaran as 'id', a.nama, b.* from calonsiswa a LEFT JOIN berkas b ON a.nopendaftaran = b.nopendaftaran WHERE a.nopendaftaran!='' AND aktif=1";
-$query = mysql_query($sql);
+$query = mysqli_query($koneksi, $sql);
 $no = 1;
-while($row = mysql_fetch_assoc($query))
+while($row = mysqli_fetch_assoc($query))
 {
     switch ($row['nisn']) {
         case '1':
@@ -120,7 +120,7 @@ while($row = mysql_fetch_assoc($query))
                 <input name=\"raport\" onclick=\"editor('editor".$no."')\" type=\"checkbox\" ".$raport." value=\"1\"/><div class=\"Checkbox-visible\"></div>
             </div>
         </td>
-        <td> 
+        <td>
             <div class=\"Checkbox\">
                 <input name=\"foto\" onclick=\"editor('editor".$no."')\" type=\"checkbox\" ".$foto." value=\"1\"/><div class=\"Checkbox-visible\"></div>
             </div>
@@ -194,5 +194,5 @@ function editor(idclass){
 </script>
 ";
 
-mysql_close($koneksi);
+mysqli_close($koneksi);
 ?>

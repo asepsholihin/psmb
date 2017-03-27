@@ -6,13 +6,13 @@ $data = "";
 
 
 $sqlresult = "SELECT b.nama, a.* FROM quis_santri a INNER JOIN calonsiswa b ON a.nopendaftaran=b.nopendaftaran WHERE a.nopendaftaran='".$_GET['nopendaftaran']."'";
-$queryresult = mysql_query($sqlresult);
-$result = mysql_fetch_assoc($queryresult);
+$queryresult = mysqli_query($koneksi, $sqlresult);
+$result = mysqli_fetch_assoc($queryresult);
 
 $sql = "SELECT kode, quis, type, kiri, kanan FROM ref_quis_santri";
-$query = mysql_query($sql);
+$query = mysqli_query($koneksi, $sql);
 $no = 1;
-while($row = mysql_fetch_assoc($query))
+while($row = mysqli_fetch_assoc($query))
 {
 
 	switch ($row['type']) {
@@ -103,7 +103,7 @@ while($row = mysql_fetch_assoc($query))
                 <label for=\"radio5".$no."\">5</label>";
             }
             $type = "
-            <div class=\"radio-toolbar\">       
+            <div class=\"radio-toolbar\">
 
             	".$row['kiri']."
                 ".$radio1."
@@ -135,7 +135,7 @@ while($row = mysql_fetch_assoc($query))
     $no++;
 }
 
-mysql_close($koneksi);
+mysqli_close($koneksi);
 ?>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
@@ -152,7 +152,7 @@ body {
 }
 
 .radio-toolbar input[type="radio"] {
-    display:none; 
+    display:none;
 }
 
 .radio-toolbar label {
@@ -167,7 +167,7 @@ body {
     line-height: 16px;
 }
 
-.radio-toolbar input[type="radio"]:checked + label { 
+.radio-toolbar input[type="radio"]:checked + label {
     background-color:#9d71e2;
     color: #fff;
 }

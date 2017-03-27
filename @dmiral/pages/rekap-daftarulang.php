@@ -2,9 +2,9 @@
 include "config.php";
 $data = "";
 $sql = "SELECT b.id_referensi, a.nopendaftaran, a.nama, b.tanggal_transaksi, b.id_referensi FROM calonsiswa a LEFT JOIN log_transaksi b ON a.nopendaftaran=b.nopendaftaran WHERE lulus=1 OR lulus=2 GROUP BY a.nopendaftaran, b.tanggal_transaksi, b.transfer ORDER BY nama ASC";
-$query = mysql_query($sql);
+$query = mysqli_query($koneksi, $sql);
 $no = 1;
-while($row = mysql_fetch_assoc($query))
+while($row = mysqli_fetch_assoc($query))
 {
     $sqls = "
     SELECT b.nama, a.transfer, a.tanggal_transaksi,
@@ -16,8 +16,8 @@ while($row = mysql_fetch_assoc($query))
     (SELECT jumlah FROM log_transaksi WHERE nopendaftaran='".$row['nopendaftaran']."' AND jenis='Orientasi Dan I\'dad' AND id_referensi='".$row['id_referensi']."' GROUP BY nopendaftaran) AS 'orientasi'
     FROM log_transaksi a JOIN calonsiswa b ON a.nopendaftaran=b.nopendaftaran WHERE a.nopendaftaran='".$row['nopendaftaran']."' AND a.id_referensi='".$row['id_referensi']."'  GROUP BY a.nopendaftaran
     ";
-    $querys = mysql_query($sqls);
-    $uang = mysql_fetch_assoc($querys);
+    $querys = mysqli_query($koneksi, $sqls);
+    $uang = mysqli_fetch_assoc($querys);
 
     //echo $sqls."<br>";
 
@@ -67,8 +67,8 @@ SELECT
 (SELECT IFNULL(SUM(jumlah), 0) FROM `log_transaksi` WHERE jenis='Iuran Bulanan/SPP') AS spp,
 (SELECT IFNULL(SUM(jumlah), 0) FROM `log_transaksi`) AS total
 ";
-$querytotal = mysql_query($sqltotal);
-$total = mysql_fetch_array($querytotal);
+$querytotal = mysqli_query($koneksi, $sqltotal);
+$total = mysqli_fetch_array($querytotal);
 
 $content = "
 $kwitansi
@@ -175,5 +175,5 @@ $(document).ready(function(){
 </script>
 ";
 
-mysql_close($koneksi);
+mysqli_close($koneksi);
 ?>

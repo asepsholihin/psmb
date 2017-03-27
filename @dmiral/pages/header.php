@@ -2,8 +2,8 @@
 include "config.php";
 
 $sql = "SELECT role_pendaftaran,role_kelulusan,role_user,role_pemberkasan,role_wawancara,role_seleksi,role_quisioner FROM users WHERE username='".$_SESSION[session_username]."'";
-$query = mysql_query($sql);
-$row = mysql_fetch_assoc($query);
+$query = mysqli_query($koneksi, $sql);
+$row = mysqli_fetch_assoc($query);
 
 switch ($row['role_kelulusan']) {
     case '1':

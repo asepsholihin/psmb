@@ -6,9 +6,9 @@ if(!$_SESSION["session_logged"])
 	if(ISSET($_POST['username'])){
 		include "config.php";
 		$sql = "SELECT username, nama FROM users WHERE username='".$_POST['username']."' AND password='".md5($_POST['password'])."'";
-		$query = mysql_query($sql);
-		$data = mysql_fetch_row($query);
-		$row = mysql_num_rows($query);
+		$query = mysqli_query($koneksi, $sql);
+		$data = mysqli_fetch_row($query);
+		$row = mysqli_num_rows($query);
 		if( $row > 0 ) {
 		    	$_SESSION["session_logged"] = "true";
 			$_SESSION["session_username"] = $data[0];

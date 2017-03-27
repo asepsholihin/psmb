@@ -9,12 +9,12 @@ LEFT JOIN quis_santri c ON a.nopendaftaran=c.nopendaftaran
 LEFT JOIN quis_ortu d ON a.nopendaftaran=d.nopendaftaran
 WHERE is_konfirmasi=1 AND aktif=1 AND kelamin='p' AND lulus!=3 AND lulus!=0 ORDER BY lulus ASC
 ";
-$query = mysql_query($sql);
+$query = mysqli_query($koneksi, $sql);
 
-$status = mysql_fetch_assoc(mysql_query("SELECT (SELECT count(replid) FROM `calonsiswa` WHERE lulus=1 AND kelamin='p') AS lulus, (SELECT count(replid) FROM `calonsiswa` WHERE lulus=2 AND kelamin='p') AS cadangan"));
+$status = mysqli_fetch_assoc(mysqli_query("SELECT (SELECT count(replid) FROM `calonsiswa` WHERE lulus=1 AND kelamin='p') AS lulus, (SELECT count(replid) FROM `calonsiswa` WHERE lulus=2 AND kelamin='p') AS cadangan"));
 
 $no = 1;
-while($row = mysql_fetch_assoc($query))
+while($row = mysqli_fetch_assoc($query))
 {
     $date = date_create($row['ts']);
     $tgllahir = date_create($row['tgllahir']);
@@ -244,7 +244,7 @@ while($row = mysql_fetch_assoc($query))
     }
 
     $querynilaiwwc = "SELECT catatan, (q001 + q002 + q003 + q004 + q005 + q006 + q007 + q008 + q009 + q010 + q011 + q012 + q013 + q014 + q015 + q016 + q017 + q018 + q019 + q020 + q021) as jml FROM quis_santri WHERE nopendaftaran='".$row['noid']."'";
-    $resultwwc = mysql_fetch_assoc(mysql_query($querynilaiwwc));
+    $resultwwc = mysqli_fetch_assoc(mysqli_query($querynilaiwwc));
     switch ($resultwwc['jml']) {
         case '':
             $nilaiwwc = '0';
@@ -326,7 +326,7 @@ while($row = mysql_fetch_assoc($query))
     }
 
     $querynilai = "SELECT q019, q020, (q001 + q002 + q003 + q004 + q005 + q006 + q007 + q008 + q009 + q010 + q011 + q012 + q013 + q014 + q015 + q016 + q017 + q018) AS jml FROM quis_ortu WHERE nopendaftaran='".$row['noid']."'";
-    $result = mysql_fetch_assoc(mysql_query($querynilai));
+    $result = mysqli_fetch_assoc(mysqli_query($querynilai));
     switch ($result['jml']) {
         case '':
             $nilaiquis = '0';
@@ -550,5 +550,5 @@ function lulus(){
 </script>
 ";
 
-mysql_close($koneksi);
+mysqli_close($koneksi);
 ?>

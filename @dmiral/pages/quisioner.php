@@ -4,9 +4,9 @@ session_start();
 include "config.php";
 $data = "";
 $sql = "SELECT quis, type FROM ref_quis_ortu";
-$query = mysql_query($sql);
+$query = mysqli_query($koneksi, $sql);
 $no = 1;
-while($row = mysql_fetch_assoc($query))
+while($row = mysqli_fetch_assoc($query))
 {
 	switch ($row['type']) {
         case '1':
@@ -17,7 +17,7 @@ while($row = mysql_fetch_assoc($query))
         case '0':
             $type = "
             <div class=\"radio-toolbar\">
-   
+
 			    <input type=\"radio\" id=\"radio1".$no."\" name=\"quis".$no."\" value=\"1\">
 			    <label for=\"radio1".$no."\">1</label>
 
@@ -25,13 +25,13 @@ while($row = mysql_fetch_assoc($query))
 			    <label for=\"radio2".$no."\">2</label>
 
 			    <input type=\"radio\" id=\"radio3".$no."\" name=\"quis".$no."\" value=\"3\">
-			    <label for=\"radio3".$no."\">3</label> 
+			    <label for=\"radio3".$no."\">3</label>
 
 			    <input type=\"radio\" id=\"radio4".$no."\" name=\"quis".$no."\" value=\"4\">
-			    <label for=\"radio4".$no."\">4</label> 
+			    <label for=\"radio4".$no."\">4</label>
 
 			    <input type=\"radio\" id=\"radio5".$no."\" name=\"quis".$no."\" value=\"5\">
-			    <label for=\"radio5".$no."\">5</label> 
+			    <label for=\"radio5".$no."\">5</label>
 
 			</div>
             ";
@@ -64,7 +64,7 @@ $content = "
 <input type=\"hidden\" name=\"evaluasi\" value=\"pendaftaran\">
 
 <ul id=\"searching\">
-	
+
 </ul>
 </div>
 
@@ -90,7 +90,7 @@ function searching(e) {
 		search : e.value
 	},
 	function(data) {
-		$('#searching').show();		
+		$('#searching').show();
         $('#searching').html(data);
     });
 }
@@ -122,5 +122,5 @@ function simpan(){
 </script>
 ";
 
-mysql_close($koneksi);
+mysqli_close($koneksi);
 ?>

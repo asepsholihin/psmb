@@ -4,9 +4,9 @@ session_start();
 include "config.php";
 $data = "";
 $sql = "SELECT nama,tmplahir,tgllahir,asalsekolah,hportu,konfirmasi_biaya,bukti_transfer FROM calonsiswa WHERE is_konfirmasi=0 AND aktif=1";
-$query = mysql_query($sql);
+$query = mysqli_query($koneksi, $sql);
 $no = 1;
-while($row = mysql_fetch_assoc($query))
+while($row = mysqli_fetch_assoc($query))
 {
     switch ($row['konfirmasi_biaya']) {
         case '1':
@@ -105,5 +105,5 @@ function konfirmasi(id,petugas,type){
 </script>
 ";
 
-mysql_close($koneksi);
+mysqli_close($koneksi);
 ?>

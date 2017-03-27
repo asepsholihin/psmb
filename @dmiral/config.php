@@ -2,9 +2,9 @@
 $dbhost = 'localhost';
 $dbuser = 'root';
 $dbpass = '';
-$koneksi = mysql_connect($dbhost, $dbuser, $dbpass);
+$db     = 'psmb';
 
-mysql_select_db('psmb');
+$koneksi = mysqli_connect($dbhost, $dbuser, $dbpass, $db);
 
 if(! $koneksi )
 {

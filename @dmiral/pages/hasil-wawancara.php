@@ -2,15 +2,15 @@
 include "config.php";
 $data = "";
 $sql = "SELECT a.nopendaftaran,a.nama,a.tmplahir,a.tgllahir,a.asalsekolah,a.hportu,b.petugas FROM calonsiswa a INNER JOIN quis_santri b ON a.nopendaftaran=b.nopendaftaran WHERE lulus=0 and aktif=1";
-$query = mysql_query($sql);
+$query = mysqli_query($koneksi, $sql);
 $no = 1;
-while($row = mysql_fetch_assoc($query))
+while($row = mysqli_fetch_assoc($query))
 {
     $date = date_create($row['ts']);
     $tgllahir = date_create($row['tgllahir']);
 
     $querynilai = "SELECT catatan, (q001 + q002 + q003 + q004 + q005 + q006 + q007 + q008 + q009 + q010 + q011 + q012 + q013 + q014 + q015 + q016 + q017 + q018 + q019 + q020 + q021) as jml FROM quis_santri WHERE nopendaftaran='".$row['nopendaftaran']."'";
-    $result = mysql_fetch_assoc(mysql_query($querynilai));
+    $result = mysqli_fetch_assoc(mysqli_query($koneksi, $querynilai));
     $nilai = $result['jml'];
 
     if($nilai >= 60 && $nilai < 70) {
@@ -73,5 +73,5 @@ $(document).ready(function(){
 </script>
 ";
 
-mysql_close($koneksi);
+mysqli_close($koneksi);
 ?>

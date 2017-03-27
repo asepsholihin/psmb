@@ -2,9 +2,9 @@
 include "config.php";
 $data = "";
 $sql = "SELECT a.nopendaftaran,a.nama,a.tmplahir,a.tgllahir,a.asalsekolah,a.hportu,b.petugas FROM calonsiswa a INNER JOIN quis_ortu b ON a.nopendaftaran=b.nopendaftaran WHERE lulus=0 and aktif=1";
-$query = mysql_query($sql);
+$query = mysqli_query($koneksi, $sql);
 $no = 1;
-while($row = mysql_fetch_assoc($query))
+while($row = mysqli_fetch_assoc($query))
 {
     $date = date_create($row['ts']);
     $tgllahir = date_create($row['tgllahir']);
@@ -34,7 +34,7 @@ $content = "
 			<th>Asal Sekolah</th>
 			<th class=\"no-sort\">Handphone</th>
 			<th>Tanggal Daftar</th>
-			<th>Petugas</th>			
+			<th>Petugas</th>
 			<th class=\"center\">Wawancara</th>
 		</tr>
 	</thead>
@@ -60,5 +60,5 @@ $(document).ready(function(){
 </script>
 ";
 
-mysql_close($koneksi);
+mysqli_close($koneksi);
 ?>

@@ -2,9 +2,9 @@
 include "config.php";
 $data = "";
 $sql = "SELECT nama,username,role_pendaftaran,role_kelulusan,role_user,role_pemberkasan,role_wawancara,role_seleksi,role_quisioner FROM users";
-$query = mysql_query($sql);
+$query = mysqli_query($koneksi, $sql);
 $no = 1;
-while($row = mysql_fetch_assoc($query))
+while($row = mysqli_fetch_assoc($query))
 {
     switch ($row['role_pendaftaran']) {
         case '1':
@@ -38,7 +38,7 @@ while($row = mysql_fetch_assoc($query))
         default:
             # code...
             break;
-    }    
+    }
     switch ($row['role_pemberkasan']) {
         case '1':
             $pemberkasan = "checked";
@@ -125,7 +125,7 @@ while($row = mysql_fetch_assoc($query))
             </div>
         </td>
         <td class=\"center\"><a onclick=\"editor('editor".$no."')\" href=\"#\"><img class=\"ic_action\" src=\"css/edit.png\"></a>  <a href=\"\"><img class=\"ic_action\" src=\"css/reset.png\"></a>  <a href=\"\"><img class=\"ic_action\" src=\"css/hapus.png\"></a></td>
-        
+
         <tr class=\"editor editor".$no."\">
         <form id=\"form".$no."\">
         <input type=\"hidden\" name=\"type\" value=\"edit\">
@@ -295,5 +295,5 @@ function tambahin(){
 </script>
 ";
 
-mysql_close($koneksi);
+mysqli_close($koneksi);
 ?>

@@ -4,9 +4,9 @@ session_start();
 include "config.php";
 $data = "";
 $sql = "SELECT a.nopendaftaran as 'id', a.nama, b.* from calonsiswa a LEFT JOIN nilai_tes b ON a.nopendaftaran = b.nopendaftaran WHERE a.is_konfirmasi=1  and a.nopendaftaran!='' and aktif=1";
-$query = mysql_query($sql);
+$query = mysqli_query($koneksi, $sql);
 $no = 1;
-while($row = mysql_fetch_assoc($query))
+while($row = mysqli_fetch_assoc($query))
 {
     switch ($row['tkd']) {
         case '':
@@ -84,7 +84,7 @@ while($row = mysql_fetch_assoc($query))
         <form id=\"form".$no."\">
         <input type=\"hidden\" name=\"nopendaftaran\" value=\"".$row['id']."\">
         <input type=\"hidden\" name=\"petugas\" value=\"".$_SESSION['session_name']."\">
-        <td>".$no."</td>        
+        <td>".$no."</td>
         <td>".$row['id']." </td>
         <td>".ucwords(strtolower($row['nama']))." </td>
         <td class=\"center\">
@@ -185,5 +185,5 @@ function editor(idclass){
 </script>
 ";
 
-mysql_close($koneksi);
+mysqli_close($koneksi);
 ?>

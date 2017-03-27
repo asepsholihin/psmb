@@ -3,9 +3,9 @@
 include "../config.php";
 $data = "";
 $sql = "SELECT nopendaftaran,nama,asalsekolah,hportu FROM calonsiswa WHERE info2='".$_GET['tanggal']."' and aktif='1'";
-$query = mysql_query($sql);
+$query = mysqli_query($koneksi, $sql);
 $no = 1;
-while($row=mysql_fetch_array($query)) {
+while($row=mysqli_fetch_array($query)) {
 	$data .="
 	<tr>
 		<td>".$no."</td>

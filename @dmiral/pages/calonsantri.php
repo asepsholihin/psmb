@@ -2,9 +2,9 @@
 include "config.php";
 $data = "";
 $sql = "SELECT nopendaftaran,nama,tmplahir,tgllahir,asalsekolah,hportu,ts,is_konfirmasi,registrasi,info2,info1 FROM calonsiswa WHERE aktif=1";
-$query = mysql_query($sql);
+$query = mysqli_query($koneksi, $sql);
 $no = 1;
-while($row = mysql_fetch_assoc($query))
+while($row = mysqli_fetch_assoc($query))
 {
     $date_ts = date_create($row['ts']);
     $tgllahir = date_create($row['tgllahir']);
@@ -140,5 +140,5 @@ function printKwitansi(replid){
 </script>
 ";
 
-mysql_close($koneksi);
+mysqli_close($koneksi);
 ?>
