@@ -40,7 +40,7 @@ echo "
 					<tr>
 						<td>NIS</td>
 						<td>:</td>
-						<td><strong>".$row['nis']."</strong></td>
+						<td><strong>".$row['nisn']."</strong></td>
 					</tr>
 					<tr>
 						<td>NIK</td>
@@ -209,7 +209,7 @@ echo "
 	<tr>
 	    <td>Alamat Sekolah</td>
 	    <td>:</td>
-	    <td><strong>".$row['alamatsekolah']."</strong></td>
+	    <td><strong>".$row['ketsekolah']."</strong></td>
 	</tr>
 	</table>
 
